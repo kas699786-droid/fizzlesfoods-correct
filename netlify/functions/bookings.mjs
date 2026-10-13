@@ -14,7 +14,9 @@ function durationMs(text) {
     + num(/(\d+(?:\.\d+)?)\s*days?/) * 86400000;
 }
 
-const KINDS = { food: ["Food", "foods"], drink: ["Drink", "drinks"], event: ["Event", "events"] };
+const KINDS = { food: ["Food", "foods"], drink: ["Drink", "drinks"], game: ["Game", "games"], event: ["Event", "events"] };
+const LOCK_MS = 12 * 3600 * 1000; // a secured booking cannot be removed until 12 hours after its date
+const todayStr = () => new Date().toISOString().slice(0, 10);
 
 function money(price, qty) {
   const m = String(price ?? "").replace(/,/g, "").match(/-?\d+(?:\.\d+)?/);
@@ -51,6 +53,11 @@ export default async (req, context) => {
       return json({ error: "Please choose a valid date." }, 400);
     }
 
+    if (new Date(`${bookingDate}T00:00:00Z`).getUTCDay() === 1) { // Mondays are closed unless the owner opened that date
+      const open = (await st.get("state/openMondays", { type: "json" })) || [];
+      if (!open.includes(bookingDate) || bookingDate < todayStr()) return json({ error: "We don't work on Mondays. Please choose another date." }, 400);
+    }
+
     const notes = clean(body.notes, 800);
     const orderId = `order-${now.toString(36)}-${crypto.randomBytes(3).toString("hex")}`;
     const lists = {};
@@ -75,8 +82,10 @@ export default async (req, context) => {
         duration: it.type === "event" ? item.duration : "",
         customerName, customerPhone, bookingDate, itemQuantity, totalCost, notes,
         sentAt: now,
-        expiresAt: day + (it.type === "event" ? durationMs(item.duration) : 0)
+        expiresAt: day + (it.type === "event" ? durationMs(item.duration) : 0),
+        paid: false, paidAt: 0
       });
+      records[records.length - 1].lockUntil = records[records.length - 1].expiresAt + LOCK_MS;
     }
     let customer = await getCustomer(req, st);
     let setCookie = null;
@@ -95,10 +104,10 @@ export default async (req, context) => {
       const prefix = `cbookings/${customer.id}/`;
       await Promise.all(records.map((r) => st.setJSON(`${prefix}${r.id}`, r)));
       const { blobs } = await st.list({ prefix });
-      if (blobs.length > 100) { // keep each customer's newest 100 bookings
-        const rows = await Promise.all(blobs.map(async (b) => ({ key: b.key, t: (await st.get(b.key, { type: "json" }))?.sentAt || 0 })));
+      if (blobs.length > 100) { // keep each customer's newest 100 bookings (secured, still-locked ones are never dropped)
+        const rows = (await Promise.all(blobs.map(async (b) => { const d = await st.get(b.key, { type: "json" }); return { key: b.key, t: d?.sentAt || 0, locked: !!(d?.paid && d.lockUntil > Date.now()) }; }))).filter((r) => !r.locked);
         rows.sort((a, b) => a.t - b.t);
-        for (const r of rows.slice(0, blobs.length - 100)) await st.delete(r.key);
+        for (const r of rows.slice(0, Math.max(0, blobs.length - 100))) await st.delete(r.key);
       }
     }
     await rlHit(st, "booking", ip, WINDOW);
@@ -113,7 +122,7 @@ export default async (req, context) => {
     const bookings = [];
     for (const { key, data } of all) {
       if (!data) continue;
-      if (Number(data.expiresAt) <= Date.now()) await st.delete(key);
+      if (Number(data.paid ? data.lockUntil : data.expiresAt) <= Date.now()) await st.delete(key);
       else bookings.push(data);
     }
     bookings.sort((a, b) => String(a.bookingDate).localeCompare(String(b.bookingDate)) || a.sentAt - b.sentAt);
@@ -123,8 +132,29 @@ export default async (req, context) => {
   if (req.method === "DELETE") {
     const id = new URL(req.url).searchParams.get("id") || "";
     if (!/^booking-[\w-]+$/.test(id)) return json({ error: "Invalid id." }, 400);
+    const rec = await st.get(`bookings/${id}`, { type: "json" });
+    if (rec && rec.paid && Number(rec.lockUntil) > Date.now()) return json({ error: "A secured booking is locked and cannot be removed until 12 hours after its date." }, 403);
     await st.delete(`bookings/${id}`);
     return json({ ok: true });
+  }
+
+  if (req.method === "PATCH") { // owner confirms (or, within 15 minutes, undoes) the mobile money payment for a whole order
+    const id = new URL(req.url).searchParams.get("id") || "";
+    if (!/^booking-[\w-]+$/.test(id)) return json({ error: "Invalid id." }, 400);
+    const body = await readBody(req, 500);
+    const rec = await st.get(`bookings/${id}`, { type: "json" });
+    if (!rec) return json({ error: "Booking not found." }, 404);
+    const { blobs } = await st.list({ prefix: "bookings/" });
+    const all = (await Promise.all(blobs.map((b) => st.get(b.key, { type: "json" })))).filter(Boolean);
+    const group = all.filter((r) => (rec.orderId ? r.orderId === rec.orderId : r.id === rec.id));
+    const want = !!body?.paid;
+    if (!want && group.some((r) => r.paid && Date.now() - r.paidAt > 15 * 60 * 1000)) return json({ error: "Payment can only be un-marked within 15 minutes." }, 403);
+    for (const r of group) {
+      const next = { ...r, paid: want, paidAt: want ? Date.now() : 0 };
+      await st.setJSON(`bookings/${r.id}`, next);
+      if (r.customerId) await st.setJSON(`cbookings/${r.customerId}/${r.id}`, next);
+    }
+    return json({ ok: true, updated: group.length });
   }
 
   return json({ error: "Method not allowed." }, 405);
