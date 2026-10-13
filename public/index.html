@@ -855,14 +855,72 @@
     .ts-btn:disabled{opacity:.4}
     .mp-top .ts-btn{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.35);height:34px;min-width:36px}
     .tile-label,.mp-switch button,.mp-title{text-transform:uppercase;letter-spacing:.04em}
+  
+    /* ===== v2 design: straight edges, full-width media, accessibility ===== */
+    .skip-link{position:absolute;left:8px;top:-60px;z-index:400;background:#fff;color:#071a2b;padding:10px 16px;font-weight:800;border:2px solid #071a2b}
+    .skip-link:focus{top:8px}
+    :focus-visible{outline:3px solid #1a73e8;outline-offset:2px}
+    .topbar :focus-visible,.mp-top :focus-visible,.hero :focus-visible,.nav-links :focus-visible{outline-color:#ffd86b}
+    main:focus{outline:0}
+    .btn,.mp-order,.tab,.mp-switch button,.acct-tabs button{min-height:44px}
+    .ts-btn{min-height:44px;min-width:44px}
+    .hero{padding:0 0 46px}
+    .hero-media{display:grid;grid-template-columns:1fr;gap:0;width:100%}
+    .hero-photo{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:0;background:#0b2236}
+    .hero-gallery{position:relative;width:100%;max-width:none;margin:0;padding:0;border:0;border-radius:0;background:#0b2236;box-shadow:none}
+    .hero-gallery .slider{width:100%;aspect-ratio:16/9;min-height:0;border-radius:0}
+    .gallery-box-title{position:absolute;top:0;left:0;z-index:3;margin:0;padding:6px 14px;background:rgba(7,26,43,.88);color:#fff;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;border-radius:0}
+    .slider-arrow{border-radius:0;width:44px;height:44px}
+    .hero-grid{display:block;width:min(820px,calc(100% - 32px));margin:0 auto;padding-top:36px;text-align:center}
+    .hero-grid .hero-actions{justify-content:center}
+    @media(min-width:900px){.hero-media{grid-template-columns:1fr 1fr}}
+    .menu-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;max-width:1180px;margin:0 auto;align-items:stretch}
+    .tile{display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch;width:100%;margin:0;padding:0;border:1px solid var(--line);border-radius:0;background:var(--card-bg);overflow:hidden;box-shadow:none;text-align:left;font:inherit;color:inherit;text-decoration:none;cursor:pointer}
+    .tile:hover{border-color:var(--gold)}
+    .tile-img{display:flex;flex:none;align-items:center;justify-content:center;width:100%;aspect-ratio:4/3;border-radius:0;overflow:hidden;background:linear-gradient(135deg,var(--navy-2),var(--navy));font-size:2.8rem}
+    .tile-img img{display:block;width:100%;height:100%;object-fit:cover}
+    .tile-label{display:flex;flex:none;align-items:center;min-height:64px;padding:12px 14px;border-top:3px solid var(--gold);border-radius:0;font-weight:800}
+    .menu-tiles .tile:last-child:nth-child(odd){grid-column:1/-1}
+    .menu-tiles .tile:last-child:nth-child(odd) .tile-img{aspect-ratio:16/7}
+    @media(min-width:900px){.menu-tiles{grid-template-columns:repeat(5,minmax(0,1fr))}.menu-tiles .tile:last-child:nth-child(odd){grid-column:auto}.menu-tiles .tile:last-child:nth-child(odd) .tile-img{aspect-ratio:4/3}}
+    .quick-links a{border-radius:0}
+    .mp-card{border-radius:0}
+    .mp-card .card-image{aspect-ratio:4/3;height:auto;border-radius:0}
+    .mp-switch{overflow-x:auto;scrollbar-width:none}
+    .mp-switch button{flex:1 0 auto;min-width:0;padding:9px 12px;font-size:.85rem}
+    .special-wrap{position:fixed;left:12px;bottom:12px;z-index:70;display:flex;align-items:stretch;max-width:min(92vw,430px);box-shadow:0 6px 24px rgba(0,0,0,.3)}
+    .special-wrap[hidden]{display:none}
+    .special-pill{display:flex;align-items:center;gap:10px;background:var(--gold);color:#071a2b;border:2px solid #071a2b;padding:8px 14px;text-align:left;font:inherit;min-height:44px;border-radius:0;cursor:pointer}
+    .special-pill strong{display:block;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase}
+    .special-pill small{display:block;font-size:.85rem;font-weight:700}
+    .special-close{background:#071a2b;color:#fff;border:0;width:44px;font-size:1rem;cursor:pointer}
+    body.menu-open .special-wrap{bottom:84px}
+    .special-item{padding:12px 0;border-bottom:1px solid var(--line)}.special-item h4{margin-bottom:4px}.special-item p{margin:4px 0}
+    .notify-bar .btn{min-height:36px}
+    .date-msg{color:#b3261e;font-weight:700;font-size:.9rem;margin-top:4px}.date-msg[hidden]{display:none}
+    .badge.paid{background:#e3f6e8;color:#0b5a28;border:1px solid #0b5a28}
+    .badge.unpaid{background:#fff2d6;color:#7a4b00;border:1px solid #7a4b00}
+    .my-note{display:block;margin-top:6px;color:var(--muted)}
+    .pay-text{margin:10px 0;line-height:1.55}.pay-ref{background:#071a2b;color:#ffd86b;padding:2px 8px;letter-spacing:.06em}
+    #payModal,#specialModal{z-index:230}
+    @media(prefers-reduced-motion:reduce){.slides{transition:none!important}}
+    #location,#about{content-visibility:auto;contain-intrinsic-size:1px 600px}
+      .contact-card a,.contact-card .contact-line strong{color:#0d6b2c}
+    .section-kicker{color:#7a5200}
+    .about .section-kicker,.hero .section-kicker{color:#ffd86b}
+    body[data-theme="dark"] .contact-card a,body[data-theme="dark"] .contact-card .contact-line strong{color:#5fd68a}
+    body[data-theme="dark"] .section-kicker{color:#ffd86b}
   </style>
   <script>try{var ts=localStorage.getItem("ff_textsize");if(ts&&+ts>=70&&+ts<=170)document.documentElement.style.fontSize=ts+"%"}catch(e){}</script>
+  <link rel="preload" as="image" href="/hero.jpg" fetchpriority="high">
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
   <div class="topbar"><button class="owner-dot" id="ownerBtn" type="button" aria-label="Owner login"></button>FIZZLESFOODS & FIZZLESFOODS EVENTS — Taste the Quality • Celebrate the Moment.</div>
   <div class="install-bar" id="installBar" hidden><span id="installText">Install our app on your phone for faster ordering.</span><button class="btn btn-primary btn-small" id="installBtn" type="button">Install App</button><button class="install-close" id="installClose" type="button" aria-label="Dismiss">✕</button></div>
 
+  <div class="install-bar notify-bar" id="notifyBar" hidden><span>Get notified about special events and updates.</span><button class="btn btn-dark btn-small" id="notifyYes" type="button">Allow notifications</button><button class="install-close" id="notifyNo" type="button" aria-label="Not now">✕</button></div>
   <nav class="nav" aria-label="Main navigation">
     <div class="nav-inner">
       <a class="brand" href="#home" aria-label="FIZZLESFOODS home">
@@ -888,29 +946,30 @@
     </div>
   </nav>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="hero-logo"><img class="logo-fixed" src="/logo.jpg" alt="Fizzles @5 Foodz logo" width="640" height="640" fetchpriority="high" decoding="async"></div>
+  <main id="main" tabindex="-1">
+    <section class="hero" id="home" aria-labelledby="heroTitle">
+      <div class="hero-media">
+        <img class="hero-photo" src="/hero.jpg" alt="The Fizzles restaurant at night with warm string lights and the glowing FIZZLES sign" width="1280" height="720" fetchpriority="high" decoding="async">
+        <div class="hero-gallery" role="region" aria-label="Photo gallery">
+          <div class="gallery-box-title" id="galleryTitle1">Gallery Box</div>
+          <div class="slider" id="gallerySlider1">
+            <div class="slides"></div>
+            <button class="slider-arrow prev" type="button" aria-label="Previous gallery image">‹</button>
+            <button class="slider-arrow next" type="button" aria-label="Next gallery image">›</button>
+            <div class="dots"></div>
+          </div>
+        </div>
+      </div>
       <div class="hero-grid">
         <div>
           <div class="eyebrow">Welcome to</div>
-          <h1>FIZZLESFOODS <span>AND</span> FIZZLESFOODS EVENTS</h1>
+          <h1 id="heroTitle">FIZZLESFOODS <span>AND</span> FIZZLESFOODS EVENTS</h1>
           <p class="hero-copy">Taste the quality. Celebrate the moment. Enjoy delicious food, warm hospitality and memorable events prepared with care.</p>
           <div class="hero-actions">
-            <button class="btn btn-primary" id="heroFoodBtn">Book for Food</button>
-            <button class="btn btn-outline" id="heroDrinkBtn">Book for Drink</button>
-            <button class="btn btn-outline" id="heroEventBtn">Book for Event</button>
-          </div>
-        </div>
-
-        <div class="hero-gallery hero-card">
-          <div class="gallery-box-title" id="galleryTitle1">Gallery Box</div>
-          <p class="gallery-use-note">Swipe left or right to move through the gallery, or use the arrows and dots below.</p>
-          <div class="slider" id="gallerySlider1">
-            <div class="slides"></div>
-            <button class="slider-arrow prev" aria-label="Previous gallery image">‹</button>
-            <button class="slider-arrow next" aria-label="Next gallery image">›</button>
-            <div class="dots"></div>
+            <button class="btn btn-primary" type="button" id="heroFoodBtn">Book for Food</button>
+            <button class="btn btn-outline" type="button" id="heroDrinkBtn">Book for Drink</button>
+            <button class="btn btn-outline" type="button" id="heroGameBtn">Book for Game</button>
+            <button class="btn btn-outline" type="button" id="heroEventBtn">Book for Event</button>
           </div>
         </div>
       </div>
@@ -923,10 +982,11 @@
           <h2>View our menu</h2>
         </div>
         <div class="menu-tiles">
-          <button class="tile" type="button" data-menu="food"><span class="tile-img" id="tileImg_food">🍽️</span><span class="tile-label">Meals</span></button>
-          <button class="tile" type="button" data-menu="drink"><span class="tile-img" id="tileImg_drink">🥤</span><span class="tile-label">Drinks / Beverages</span></button>
-          <button class="tile" type="button" data-menu="event"><span class="tile-img" id="tileImg_event">🎉</span><span class="tile-label">Events</span></button>
-          <button class="tile" type="button" id="tileCatering"><span class="tile-img">🥘</span><span class="tile-label">Event Catering</span></button>
+          <button class="tile" type="button" data-menu="food"><span class="tile-img" id="tileImg_food" aria-hidden="true">🍽️</span><span class="tile-label">Meals</span></button>
+          <button class="tile" type="button" data-menu="drink"><span class="tile-img" id="tileImg_drink" aria-hidden="true">🥤</span><span class="tile-label">Drinks / Beverages</span></button>
+          <button class="tile" type="button" data-menu="game"><span class="tile-img" id="tileImg_game" aria-hidden="true">🎮</span><span class="tile-label">Games</span></button>
+          <button class="tile" type="button" data-menu="event"><span class="tile-img" id="tileImg_event" aria-hidden="true">🎉</span><span class="tile-label">Events</span></button>
+          <button class="tile" type="button" id="tileCatering"><span class="tile-img" aria-hidden="true">🥘</span><span class="tile-label">Event Catering</span></button>
         </div>
         <div class="quick-links">
           <a href="#location">📍 Location</a>
@@ -1025,7 +1085,12 @@
   <footer>
     © <span id="year"></span> FIZZLESFOODS & FIZZLESFOODS EVENTS. All rights reserved.
   </footer>
-  <div class="menu-page" id="menuPage" hidden>
+  <div class="special-wrap" id="specialWrap" hidden>
+    <button class="special-pill" id="specialPill" type="button" aria-haspopup="dialog"><span aria-hidden="true">🎉</span><span><strong>Special event</strong><small id="specialPillText"></small></span></button>
+    <button class="special-close" id="specialClose" type="button" aria-label="Hide special event notice">✕</button>
+  </div>
+
+  <div class="menu-page" id="menuPage" role="dialog" aria-modal="true" aria-label="Menu" hidden>
     <header class="mp-top">
       <button class="mp-back" id="mpBack" type="button" aria-label="Back">←</button>
       <div class="mp-title" id="mpTitle">Meals</div>
@@ -1033,7 +1098,7 @@
       <button class="mp-cart" id="mpCart" type="button" aria-label="Open my order">🛒<span id="cartCount" hidden>0</span></button>
     </header>
     <div class="mp-switch" id="mpSwitch">
-      <button type="button" data-switch="food">Meals</button><button type="button" data-switch="drink">Drinks</button><button type="button" data-switch="event">Events</button>
+      <button type="button" data-switch="food">Meals</button><button type="button" data-switch="drink">Drinks</button><button type="button" data-switch="game">Games</button><button type="button" data-switch="event">Events</button>
     </div>
     <div class="mp-search"><input type="search" id="mpSearch" placeholder="Search this menu..." aria-label="Search this menu" autocomplete="off" maxlength="60"></div>
     <div class="mp-tabs" id="mpTabs" role="tablist"></div>
@@ -1055,13 +1120,14 @@
           <div class="form-grid">
             <div class="field"><label for="customerName">Your name</label><input id="customerName" required maxlength="80"></div>
             <div class="field"><label for="customerPhone">Your phone number</label><input id="customerPhone" required maxlength="30" inputmode="tel"></div>
-            <div class="field"><label for="bookingDate">Preferred date</label><input id="bookingDate" type="date" required></div>
+            <div class="field"><label for="bookingDate">Preferred date</label><input id="bookingDate" type="date" required aria-describedby="dateHint dateMsg"><small class="privacy-note" id="dateHint"></small><div class="date-msg" id="dateMsg" role="alert" hidden></div></div>
             <div class="field full"><label for="bookingNotes">Additional notes (optional)</label><textarea id="bookingNotes" maxlength="800" placeholder="Any special request or additional information"></textarea></div>
           </div>
           <div class="field" id="orderAccountBox" style="margin-top:10px">
-            <label for="orderPassword">Create a password (optional)</label>
+            <p class="privacy-note" style="margin:0 0 8px"><strong>Keep evidence of your payment.</strong> To have proof that you paid after booking, create an account with just your phone number and password.</p>
+            <button type="button" class="btn btn-dark btn-small" id="orderCreateAcct">Create account</button>
+            <label for="orderPassword" style="margin-top:12px">Or set a password now (optional)</label>
             <input id="orderPassword" type="password" minlength="8" maxlength="100" autocomplete="new-password" placeholder="At least 8 characters">
-            <small class="privacy-note">Set a password to save this booking to your own account and view your booking history anytime. Leave it empty to order as a guest.</small>
           </div>
           <p class="privacy-note" id="orderSignedIn" hidden></p>
           <div class="hp" aria-hidden="true"><label>Website <input id="bookingWebsite" tabindex="-1" autocomplete="off"></label></div>
@@ -1100,6 +1166,29 @@
           <h4 style="margin:14px 0 6px">My bookings</h4>
           <div id="myBookings"></div>
           <div class="modal-actions"><button class="btn btn-dark" type="button" id="acctLogout">Log out</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="specialModal" role="dialog" aria-modal="true" aria-labelledby="specialTitle">
+    <div class="modal-card">
+      <div class="modal-head"><h3 id="specialTitle">Special events</h3><button class="close" data-close="specialModal" aria-label="Close">×</button></div>
+      <div class="modal-body"><div id="specialList"></div></div>
+    </div>
+  </div>
+
+  <div class="modal" id="payModal" role="dialog" aria-modal="true" aria-labelledby="payTitle">
+    <div class="modal-card">
+      <div class="modal-head"><h3 id="payTitle">Booking received</h3><button class="close" data-close="payModal" aria-label="Close">×</button></div>
+      <div class="modal-body">
+        <p><span class="badge unpaid">Booking not secured yet</span></p>
+        <p class="pay-text"><strong>To secure your booking spot</strong>, contact the same WhatsApp number you are sending this booking to (<strong>0242992579</strong>) and send your money through mobile money with the reference <strong class="pay-ref">fizzle</strong>.</p>
+        <p class="notice" id="payAmount" hidden></p>
+        <p class="pay-text">When we confirm your payment, your booking changes to <span class="badge paid">Booking secured</span>. You can check it any time under My Account.</p>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-dark" data-close="payModal">Close</button>
+          <button type="button" class="btn btn-primary" id="payWhatsApp">Send booking on WhatsApp</button>
         </div>
       </div>
     </div>
@@ -1171,12 +1260,15 @@
       <div class="modal-body owner-panel open">
         <div class="notice success">Changes are stored in this browser. The public website will show them on this device after saving. For updates that must be shared across all customers/devices, connect this panel to a secure database/backend.</div>
 
-        <div class="owner-tabs">
+        <div class="owner-tabs" role="tablist">
           <button class="tab active" data-tab="ownerFoods">Food</button>
           <button class="tab" data-tab="ownerDrinks">Drinks</button>
+          <button class="tab" data-tab="ownerGames">Games</button>
           <button class="tab" data-tab="ownerEvents">Events</button>
+          <button class="tab" data-tab="ownerSpecial">Special</button>
           <button class="tab" data-tab="ownerGallery">Gallery</button>
           <button class="tab" data-tab="ownerHistory">History</button>
+          <button class="tab" data-tab="ownerMondays">Mondays</button>
           <button class="tab" data-tab="ownerPasswordTab">Password</button>
         </div>
 
@@ -1264,6 +1356,76 @@
           <div class="admin-list" id="drinkAdminList"></div>
         </section>
 
+        <section class="owner-section" id="ownerGames">
+          <h4>Add / Update Game</h4>
+          <form id="gameAdminForm">
+            <input type="hidden" id="gameEditId">
+            <div class="form-grid">
+              <div class="field">
+                <label for="gameName">Game name</label>
+                <input id="gameName" required maxlength="80" placeholder="e.g. Pool table">
+              </div>
+                            <div class="field">
+                <label for="gamePrice">Price</label>
+                <input id="gamePrice" required maxlength="40" placeholder="e.g. GH₵ 80">
+              </div>
+              <div class="field full">
+                <label for="gameDescription">Description (optional)</label>
+                <textarea id="gameDescription" maxlength="400" placeholder="Short description (rules, time, players)"></textarea>
+              </div>
+              <div class="field full">
+                <label for="gameImage">Photo (optional) - choose a new photo any time to change it</label>
+                <input id="gameImage" type="file" accept="image/*">
+                <input type="hidden" id="gameImageUrl">
+                <div class="photo-row"><img id="gamePhotoPreview" class="photo-preview" alt="" hidden><button type="button" class="btn btn-dark btn-small" id="gamePhotoRemove" hidden>Remove photo</button></div>
+              </div>
+            </div>
+            <div class="modal-actions">
+              <button class="btn btn-dark btn-small" type="button" id="gameClearBtn">Clear</button>
+              <button class="btn btn-primary btn-small" type="submit">Save Game</button>
+            </div>
+          </form>
+          <div class="admin-list" id="gameAdminList"></div>
+        </section>
+
+        <section class="owner-section" id="ownerSpecial">
+          <h4>Special events</h4>
+          <div class="notice">A special event shows as a small notice for every customer. It disappears by itself 3 hours after it starts.</div>
+          <form id="specialAdminForm">
+            <input type="hidden" id="specialEditId">
+            <div class="form-grid">
+              <div class="field full"><label for="specialName">Event name</label><input id="specialName" required maxlength="80" placeholder="e.g. Easter Feast"></div>
+              <div class="field"><label for="specialDate">Date</label><input id="specialDate" type="date" required></div>
+              <div class="field"><label for="specialTime">Time</label><input id="specialTime" type="time" required></div>
+              <div class="field"><label for="specialPrice">Price</label><input id="specialPrice" required maxlength="40" placeholder="e.g. GH₵ 150"></div>
+              <div class="field full"><label for="specialDescription">Description (optional)</label><textarea id="specialDescription" maxlength="500"></textarea></div>
+            </div>
+            <div class="modal-actions">
+              <button class="btn btn-dark btn-small" type="button" id="specialClearBtn">Clear</button>
+              <button class="btn btn-primary btn-small" type="submit">Save special event</button>
+            </div>
+          </form>
+          <div class="admin-list" id="specialAdminList"></div>
+          <h4 style="margin-top:26px">Send an update to customers</h4>
+          <div class="notice">This sends a notification to every customer who allowed notifications. New special events and new menu items are announced automatically.</div>
+          <form id="broadcastForm">
+            <div class="field"><label for="broadcastTitle">Title</label><input id="broadcastTitle" required maxlength="60"></div>
+            <div class="field"><label for="broadcastBody">Message</label><textarea id="broadcastBody" required maxlength="200"></textarea></div>
+            <button class="btn btn-primary" type="submit">Send notification</button>
+          </form>
+        </section>
+
+        <section class="owner-section" id="ownerMondays">
+          <h4>Open Mondays</h4>
+          <div class="notice">We are closed on Mondays. Add a Monday date here to open that day for bookings. The date disappears by itself once it has passed.</div>
+          <form id="mondayForm">
+            <div class="field"><label for="mondayDate">Monday date</label><input id="mondayDate" type="date" required></div>
+            <div class="date-msg" id="mondayMsg" role="alert" hidden></div>
+            <button class="btn btn-primary btn-small" type="submit">Open this Monday</button>
+          </form>
+          <div class="admin-list" id="mondayList"></div>
+        </section>
+
         <section class="owner-section" id="ownerEvents">
           <h4>Add / Update Event</h4>
           <form id="eventAdminForm">
@@ -1329,7 +1491,7 @@
 
         <section class="owner-section" id="ownerHistory">
           <h4>Booking History</h4>
-          <div class="notice">Bookings are added here when the customer sends the booking to WhatsApp. Today's and future bookings remain until their booking period has ended.</div>
+          <div class="notice">Each booking shows "Booking not secured" until you confirm the mobile money payment (reference fizzle) and tap "Mark payment received". Then it turns green, and it is locked until 12 hours after its date.</div>
           <div class="admin-list" id="bookingHistoryList"></div>
         </section>
 
@@ -1422,6 +1584,9 @@
       foods: "fizzlesfoods_foods_v1",
       events: "fizzlesfoods_events_v1",
       drinks: "fizzlesfoods_drinks_v1",
+      games: "fizzlesfoods_games_v1",
+      special: "fizzlesfoods_special_v1",
+      openMondays: "fizzlesfoods_open_mondays_v1",
       gallery1: "fizzlesfoods_gallery_box1_v1",
       galleryTitles: "fizzlesfoods_gallery_titles_v1",
       history: "fizzlesfoods_booking_history_v1",
@@ -1448,7 +1613,7 @@
 
     const FOOD_CATEGORIES = ["Continental dishes", "Local dishes", "Ice cream", "Salad"];
     const DRINK_CATEGORIES = ["Wine", "Juice", "Non-alcoholic soft drinks", "Alcoholic drink"];
-    const TYPE_LABEL = { food: "Food", drink: "Drink", event: "Event" };
+    const TYPE_LABEL = { food: "Food", drink: "Drink", game: "Game", event: "Event" };
 
     const DEFAULT_FOODS = [];
     const DEFAULT_DRINKS = [];
@@ -1520,14 +1685,14 @@
 
     function queueRemoteState(key, value) {
       if (!remoteStateReady) return;
-      const map = { [STORAGE.foods]: "foods", [STORAGE.drinks]: "drinks", [STORAGE.gallery1]: "gallery1", [STORAGE.events]: "events", [STORAGE.galleryTitles]: "galleryTitles" };
+      const map = { [STORAGE.foods]: "foods", [STORAGE.drinks]: "drinks", [STORAGE.games]: "games", [STORAGE.special]: "special", [STORAGE.openMondays]: "openMondays", [STORAGE.gallery1]: "gallery1", [STORAGE.events]: "events", [STORAGE.galleryTitles]: "galleryTitles" };
       const stateKey = map[key];
       if (!stateKey) return;
       apiRequest("/state", { method: "POST", body: JSON.stringify({ key: stateKey, value }) })
         .catch(error => {
           console.error("Shared state save failed:", error);
           alert("Your change was NOT saved to the server: " + (error.message || "unknown error") + ". Please log in again and retry.");
-          loadRemoteState().then(() => { renderFoods(); renderDrinks(); renderEvents(); renderGallery(); });
+          loadRemoteState().then(() => { renderFoods(); renderDrinks(); renderGames(); renderSpecial(); renderMondays(); renderEvents(); renderGallery(); });
         });
     }
 
@@ -1570,6 +1735,9 @@
           ["foods", STORAGE.foods, DEFAULT_FOODS],
           ["events", STORAGE.events, DEFAULT_EVENTS],
           ["drinks", STORAGE.drinks, DEFAULT_DRINKS],
+          ["games", STORAGE.games, []],
+          ["special", STORAGE.special, []],
+          ["openMondays", STORAGE.openMondays, []],
           ["gallery1", STORAGE.gallery1, []],
           ["galleryTitles", STORAGE.galleryTitles, {1:"Gallery Box",2:"Gallery Box"}]
         ];
@@ -1656,15 +1824,21 @@
     function openModal(id) {
       const modal = document.getElementById(id);
       if (!modal) return;
+      modal._opener = document.activeElement;
       modal.classList.add("open");
       document.body.style.overflow = "hidden";
+      const card = modal.querySelector(".modal-card") || modal;
+      card.setAttribute("tabindex", "-1");
+      setTimeout(() => card.focus({ preventScroll: true }), 30);
     }
 
     function closeModal(id) {
       const modal = document.getElementById(id);
       if (!modal) return;
       modal.classList.remove("open");
-      if (!$(".modal.open")) document.body.style.overflow = "";
+      if (!$(".modal.open") && $("#menuPage").hidden) document.body.style.overflow = "";
+      const opener = modal._opener; modal._opener = null;
+      if (opener && document.contains(opener)) { try { opener.focus({ preventScroll: true }); } catch (e) {} }
     }
 
     function closeAllModals() {
@@ -1913,9 +2087,7 @@
         });
       });
 
-      document.addEventListener("keydown", event => {
-        if (event.key === "Escape") closeAllModals();
-      });
+      
     }
 
     function setupSliders() {
@@ -2048,7 +2220,7 @@
       const safeGallery = getGallery(box).filter(item => item && (item.url || item.data));
       slides.innerHTML = safeGallery.length
         ? safeGallery.map((item, i) => `<div class="slide"><img ${i === 0 ? `src="${escapeHTML(item.url || item.data)}"` : `data-gallery-src="${escapeHTML(item.url || item.data)}"`} alt="${escapeHTML(item.category ? item.category + " - " : "")}${escapeHTML(item.name || `${galleryTitle} image`)}" decoding="async" ${i === 0 ? `fetchpriority="high"` : `loading="lazy"`}>${box === 1 && item.category ? `<span class="gallery-category-badge">${escapeHTML(item.category)}</span>` : ""}</div>`).join("")
-        : `<div class="slide"><div class="slide-placeholder"><div><strong>${escapeHTML(galleryTitle)}</strong><span>Upload photos from Owner → Gallery.</span></div></div></div>`;
+        : `<div class="slide"><div class="slide-placeholder"><div><strong>${escapeHTML(galleryTitle)}</strong><span>Photos coming soon.</span></div></div></div>`;
       dots.innerHTML = safeGallery.map((_,i) => `<button class="dot ${i===0?"active":""}" aria-label="Go to gallery box ${box} image ${i+1}"></button>`).join("");
 
       admin.innerHTML = safeGallery.length ? safeGallery.map(item => `
@@ -2185,23 +2357,30 @@
       const box = $("#bookingHistoryList");
       if (!box) return;
       const history = getHistory();
-      box.innerHTML = history.length ? history.map(item => `
+      box.innerHTML = history.length ? history.map(item => {
+        const locked = item.paid && Number(item.lockUntil) > Date.now();
+        const canUndo = item.paid && Date.now() - Number(item.paidAt) < 15 * 60 * 1000;
+        return `
         <div class="admin-item">
           <div class="history-meta">
             <strong>${escapeHTML(item.selected)}</strong>
-            <small>${escapeHTML(item.type)} • Booking date: ${escapeHTML(item.bookingDate)}</small>
-            <small>Customer: ${escapeHTML(item.customerName)} • ${escapeHTML(item.customerPhone)}</small>
-            ${(item.type === "Food" || item.type === "Drink") ? `<small>Items: ${escapeHTML(item.itemQuantity || "")} • Total: ${escapeHTML(item.totalCost || "Contact us")}</small>` : ""}
+            <small>${escapeHTML(item.type)} \u00b7 Booking date: ${escapeHTML(item.bookingDate)}</small>
+            <small>Customer: ${escapeHTML(item.customerName)} \u00b7 ${escapeHTML(item.customerPhone)}</small>
+            ${item.itemQuantity ? `<small>Items: ${escapeHTML(item.itemQuantity)} \u00b7 Total: ${escapeHTML(item.totalCost || "Contact us")}</small>` : ""}
             ${item.notes ? `<small>Notes: ${escapeHTML(item.notes)}</small>` : ""}
-            <span class="history-badge">Sent to WhatsApp</span>
+            <span class="badge ${item.paid ? "paid" : "unpaid"}">${item.paid ? "Booking secured" : "Booking not secured"}</span>
+            ${locked ? `<small>Locked until ${escapeHTML(new Date(Number(item.lockUntil)).toLocaleString("en-GB", { dateStyle: "medium", timeStyle: "short", timeZone: "UTC" }))}</small>` : ""}
           </div>
-          <button class="btn btn-danger btn-small delete-history" data-id="${escapeHTML(item.id)}">Remove</button>
-        </div>
-      `).join("") : `<div class="empty">No active bookings in history.</div>`;
+          <div class="admin-buttons">
+            ${item.paid ? (canUndo ? `<button class="btn btn-dark btn-small undo-paid" data-id="${escapeHTML(item.id)}">Undo</button>` : "") : `<button class="btn btn-primary btn-small mark-paid" data-id="${escapeHTML(item.id)}">Mark payment received</button>`}
+            ${locked ? `<button class="btn btn-danger btn-small" disabled>Locked</button>` : `<button class="btn btn-danger btn-small delete-history" data-id="${escapeHTML(item.id)}">Remove</button>`}
+          </div>
+        </div>`;
+      }).join("") : `<div class="empty">No active bookings in history.</div>`;
     }
 
     function setupOwner() {
-      ["food", "drink", "event"].forEach(setupPhotoField);
+      ["food", "drink", "game", "event"].forEach(setupPhotoField);
       const logoutBtn = $("#ownerLogoutBtn");
       if (logoutBtn) logoutBtn.addEventListener("click", async () => {
         try { await ownerApi("/api/auth-login", { method: "DELETE" }); } catch (_) {}
@@ -2356,6 +2535,14 @@
       });
 
       $("#bookingHistoryList").addEventListener("click", async event => {
+        const paidBtn = event.target.closest(".mark-paid,.undo-paid");
+        if (paidBtn) {
+          try {
+            await apiRequest(`/bookings?id=${encodeURIComponent(paidBtn.dataset.id)}`, { method: "PATCH", body: JSON.stringify({ paid: paidBtn.classList.contains("mark-paid") }) });
+            await loadRemoteBookings();
+          } catch (error) { alert(error.message || "The status could not be changed."); }
+          return;
+        }
         const button = event.target.closest(".delete-history");
         if (!button) return;
         const id = button.dataset.id;
@@ -2408,6 +2595,7 @@
     function setupCustomerActions() {
       $("#heroFoodBtn").addEventListener("click", () => openMenu("food"));
       $("#heroDrinkBtn").addEventListener("click", () => openMenu("drink"));
+      $("#heroGameBtn").addEventListener("click", () => openMenu("game"));
       $("#heroEventBtn").addEventListener("click", () => openMenu("event"));
       $("#cateringBtn").addEventListener("click", () => openModal("cateringModal"));
       $("#tileCatering").addEventListener("click", () => openModal("cateringModal"));
@@ -2509,6 +2697,7 @@
     const MENUS = {
       food:  { label: "Meals",  one: "Meal",  items: getFoods,  cats: FOOD_CATEGORIES,  norm: normalizeFoodCategory,  act: "Order Now", empty: "Our meals will appear here soon." },
       drink: { label: "Drinks", one: "Drink", items: getDrinks, cats: DRINK_CATEGORIES, norm: normalizeDrinkCategory, act: "Order Now", empty: "Our drinks will appear here soon." },
+      game:  { label: "Games",  one: "Game",  items: getGames,  cats: null,             norm: null,                   act: "Order Now", empty: "Our games will appear here soon." },
       event: { label: "Events", one: "Event", items: getEvents, cats: null,             norm: null,                   act: "Book Now",  empty: "Event packages will appear here soon." }
     };
     let menuType = "food", menuCat = "", cart = [];
@@ -2560,6 +2749,8 @@
       if (btn) btn.textContent = addLabel(type, id);
     }
 
+    let menuOpener = null;
+
     function renderTiles() {
       Object.keys(MENUS).forEach(type => {
         const el = document.getElementById("tileImg_" + type);
@@ -2582,7 +2773,7 @@
         tabs.hidden = !present.length;
         tabs.innerHTML = present.map(c => `<button type="button" role="tab" data-cat="${escapeHTML(c)}" class="${c === menuCat ? "active" : ""}" aria-selected="${c === menuCat}">${escapeHTML(c)}</button>`).join("");
         list = all.filter(x => m.norm(x.category) === menuCat); heading = menuCat;
-      } else { tabs.hidden = true; list = all; heading = "Event packages"; }
+      } else { tabs.hidden = true; list = all; heading = menuType === "event" ? "Event packages" : m.label; }
       $("#mpHeading").textContent = heading;
       $("#mpGrid").innerHTML = list.length ? list.map(item => `
         <article class="mp-card">
@@ -2611,17 +2802,20 @@
     function renderEvents() { renderEventAdminList(); refreshMenu(); }
 
     function openMenu(type) {
-      menuType = MENUS[type] ? type : "food"; menuCat = ""; $("#mpSearch").value = "";
+      menuOpener = document.activeElement; menuType = MENUS[type] ? type : "food"; menuCat = ""; $("#mpSearch").value = "";
       const page = $("#menuPage");
       page.hidden = false; page.scrollTop = 0;
-      document.body.classList.add("no-scroll");
+      document.body.classList.add("no-scroll", "menu-open");
       if (location.hash !== "#menu") location.hash = "#menu";
       renderMenu(); saveCart();
+      setTimeout(() => $("#mpBack").focus({ preventScroll: true }), 30);
     }
 
     function closeMenu() {
       $("#menuPage").hidden = true;
-      document.body.classList.remove("no-scroll");
+      document.body.classList.remove("no-scroll", "menu-open");
+      if (menuOpener && document.contains(menuOpener)) { try { menuOpener.focus({ preventScroll: true }); } catch (e) {} }
+      menuOpener = null;
     }
 
     function orderTotalText(lines) {
@@ -2656,7 +2850,7 @@
       if (location.hash === "#menu") history.replaceState(null, "", location.pathname + location.search);
       window.addEventListener("hashchange", () => { if (location.hash !== "#menu" && !$("#menuPage").hidden) closeMenu(); });
       $("#mpBack").addEventListener("click", () => { if (location.hash === "#menu") history.back(); else closeMenu(); });
-      const openOrder = () => { renderOrder(); openModal("orderModal"); };
+      const openOrder = () => { renderOrder(); updateDateHint(); openModal("orderModal"); };
       $("#mpCart").addEventListener("click", openOrder);
       $("#mpCartBar").addEventListener("click", openOrder);
       $("#orderMore").addEventListener("click", () => closeModal("orderModal"));
@@ -2681,6 +2875,12 @@
         const customerName = $("#customerName").value.trim(), customerPhone = $("#customerPhone").value.trim();
         const bookingDate = $("#bookingDate").value, notes = $("#bookingNotes").value.trim();
         if (!customerName || !customerPhone || !bookingDate) return;
+        if (dateProblem(bookingDate)) { updateDateHint(); $("#bookingDate").focus(); return; }
+        if (!customer && !($("#orderPassword").value)) {
+          if (confirm("To have evidence that you made payment after booking, create an account with just your phone number and password.\n\nPress OK to create your account now, or Cancel to continue as a guest.")) {
+            closeModal("orderModal"); openAccountRegister(customerName, customerPhone); return;
+          }
+        }
         const btn = $("#orderSubmit"); btn.disabled = true;
         let result = {};
         try {
@@ -2699,11 +2899,11 @@
             ? `${i + 1}. Event: ${l.item.name}${l.item.duration ? " (" + l.item.duration + ")" : ""} - ${l.item.price || "Contact us"}`
             : `${i + 1}. ${TYPE_LABEL[l.type]}: ${l.item.name} x${l.qty} - ${l.item.price || "Contact us"} each = ${formatFoodTotal(l.item.price, l.qty)}`),
           total ? "" : null, total || null, "",
-          `Customer name: ${customerName}`, `Customer phone: ${customerPhone}`, `Preferred date: ${bookingDate}`, `Additional notes: ${notes || "None"}`
+          `Customer name: ${customerName}`, `Customer phone: ${customerPhone}`, `Preferred date: ${bookingDate}`, `Additional notes: ${notes || "None"}`, "", "Payment: I will send the money by mobile money to this same number with the reference: fizzle", "Status: NOT SECURED until my payment is received."
         ].filter(x => x !== null).join("\n");
         cart = []; saveCart(); closeModal("orderModal"); $("#orderForm").reset(); if (result.customer) customer = result.customer; updateAccountUI(); btn.disabled = false;
         if (!$("#menuPage").hidden) renderMenu();
-        sendWhatsApp(message);
+        showPaymentNotice(message, total);
       });
       saveCart();
     }
@@ -2744,7 +2944,7 @@
     }
 
     /* ---------- customer accounts ---------- */
-    let customer = null, acctMode = "login";
+    let customer = null, acctMode = "login", openAccountRegister = () => {};
     const showPhone = p => { p = String(p || ""); return p.startsWith("233") ? "0" + p.slice(3) : p; };
 
     function updateAccountUI() {
@@ -2778,9 +2978,10 @@
         const groups = {};
         bookings.forEach(b => { const k = b.orderId || b.id; (groups[k] = groups[k] || []).push(b); });
         box.innerHTML = Object.values(groups).map(g => {
-          const upcoming = g.some(b => Number(b.expiresAt) > Date.now());
-          return `<div class="my-order"><div class="my-order-head"><strong>${escapeHTML(g[0].bookingDate)}</strong><span class="badge ${upcoming ? "up" : "done"}">${upcoming ? "Upcoming" : "Completed"}</span></div>` +
-            g.map(b => `<div class="my-line">${escapeHTML(b.selected)}${b.itemQuantity ? " \u00d7 " + b.itemQuantity : ""}${b.duration ? " (" + escapeHTML(b.duration) + ")" : ""}<small>${escapeHTML(b.totalCost || b.price || "")}</small></div>`).join("") + `</div>`;
+          const upcoming = g.some(b => Number(b.expiresAt) > Date.now()), secured = g.every(b => b.paid);
+          return `<div class="my-order"><div class="my-order-head"><strong>${escapeHTML(g[0].bookingDate)}</strong><span class="badge ${secured ? "paid" : "unpaid"}">${secured ? "Booking secured" : "Booking not secured"}</span></div>` +
+            g.map(b => `<div class="my-line">${escapeHTML(b.selected)}${b.itemQuantity ? " \u00d7 " + b.itemQuantity : ""}${b.duration ? " (" + escapeHTML(b.duration) + ")" : ""}<small>${escapeHTML(b.totalCost || b.price || "")}</small></div>`).join("") +
+            `<small class="my-note">${secured ? "Payment received. Thank you!" : (upcoming ? "To secure it, send your mobile money to 0242992579 on WhatsApp with the reference fizzle." : "Completed without payment confirmation.")}</small></div>`;
         }).join("");
       } catch (e) { box.innerHTML = `<div class="empty">${escapeHTML(e.message)}</div>`; }
     }
@@ -2794,6 +2995,12 @@
         $("#acctSubmit").textContent = m === "register" ? "Create account" : "Sign in";
         $("#acctPassword").autocomplete = m === "register" ? "new-password" : "current-password";
         $("#acctMsg").classList.remove("show");
+      };
+      openAccountRegister = (name, phone) => {
+        setMode("register");
+        if (name) $("#acctName").value = name;
+        if (phone) $("#acctPhone").value = phone;
+        updateAccountUI(); openModal("accountModal");
       };
       $("#accountNav").addEventListener("click", () => {
         setMode("login"); updateAccountUI();
@@ -2844,6 +3051,216 @@
       apply(false);
     }
 
+    /* ---------- games, special events, open Mondays, payment notice, notifications ---------- */
+    function getGames() { const v = readJSON(STORAGE.games, []); return Array.isArray(v) ? v : []; }
+    function getSpecialAll() { const v = readJSON(STORAGE.special, []); return Array.isArray(v) ? v : []; }
+    function getSpecial() {
+      return getSpecialAll().filter(x => Date.parse(`${x.date}T${x.time}:00Z`) + 3 * 3600 * 1000 > Date.now())
+        .sort((a, b) => (a.date + a.time).localeCompare(b.date + b.time));
+    }
+    function todayStr() { return new Date().toISOString().slice(0, 10); }
+    function getOpenMondays() { const v = readJSON(STORAGE.openMondays, []); return (Array.isArray(v) ? v : []).filter(d => d >= todayStr()).sort(); }
+    const fmtDate = d => new Date(d + "T00:00:00Z").toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" });
+    const fmtTime = t => { const [h, m] = String(t).split(":").map(Number); return `${((h + 11) % 12) + 1}:${String(m).padStart(2, "0")} ${h < 12 ? "AM" : "PM"}`; };
+    const fmtWhen = x => `${fmtDate(x.date)} \u00b7 ${fmtTime(x.time)}`;
+    let pendingMessage = "";
+
+    function renderGames() { renderGameAdminList(); refreshMenu(); }
+
+    function renderGameAdminList() {
+      const box = $("#gameAdminList");
+      if (!box) return;
+      const games = getGames();
+      box.innerHTML = games.length ? games.map(g => `
+        <div class="admin-item">
+          <div><strong>${escapeHTML(g.name)}</strong><small>${escapeHTML(g.price)}</small></div>
+          <div class="admin-buttons">
+            <button class="btn btn-dark btn-small edit-game" data-id="${escapeHTML(g.id)}">Edit</button>
+            <button class="btn btn-danger btn-small delete-game" data-id="${escapeHTML(g.id)}">Delete</button>
+          </div>
+        </div>`).join("") : `<div class="empty">No games yet.</div>`;
+    }
+
+    function resetGameForm() { $("#gameAdminForm").reset(); $("#gameEditId").value = ""; updatePhotoPreview("game"); }
+
+    function fillGameForm(id) {
+      const item = getGames().find(x => x.id === id);
+      if (!item) return;
+      $("#gameEditId").value = item.id; $("#gameName").value = item.name; $("#gamePrice").value = item.price;
+      $("#gameDescription").value = item.description || ""; $("#gameImageUrl").value = item.image || ""; updatePhotoPreview("game");
+      document.getElementById("ownerGames").scrollIntoView({ block: "start" });
+    }
+
+    function renderSpecial() {
+      const list = getSpecial(), wrap = $("#specialWrap");
+      let hiddenSig = ""; try { hiddenSig = sessionStorage.getItem("ff_special_hidden") || ""; } catch (e) {}
+      wrap.hidden = !list.length || hiddenSig === list.map(x => x.id).join(",");
+      if (list.length) $("#specialPillText").textContent = `${list[0].name} \u00b7 ${fmtWhen(list[0])}` + (list.length > 1 ? ` (+${list.length - 1} more)` : "");
+      $("#specialList").innerHTML = list.length ? list.map((x, i) => `
+        <article class="special-item">
+          <h4>${escapeHTML(x.name)}</h4>
+          <p><strong>${escapeHTML(fmtWhen(x))}</strong>${x.price ? " \u00b7 " + escapeHTML(x.price) : ""}</p>
+          ${x.description ? `<p>${escapeHTML(x.description)}</p>` : ""}
+          <button class="btn btn-dark btn-small" type="button" data-ask="${i}">Ask about this on WhatsApp</button>
+        </article>`).join("") : `<div class="empty">No special events right now.</div>`;
+      const box = $("#specialAdminList");
+      if (box) box.innerHTML = list.length ? list.map(x => `
+        <div class="admin-item">
+          <div><strong>${escapeHTML(x.name)}</strong><small>${escapeHTML(fmtWhen(x))}${x.price ? " \u00b7 " + escapeHTML(x.price) : ""}</small></div>
+          <div class="admin-buttons">
+            <button class="btn btn-dark btn-small edit-special" data-id="${escapeHTML(x.id)}">Edit</button>
+            <button class="btn btn-danger btn-small delete-special" data-id="${escapeHTML(x.id)}">Delete</button>
+          </div>
+        </div>`).join("") : `<div class="empty">No upcoming special events.</div>`;
+    }
+
+    function renderMondays() {
+      const days = getOpenMondays(), box = $("#mondayList");
+      if (box) box.innerHTML = days.length ? days.map(d => `
+        <div class="admin-item">
+          <div><strong>${escapeHTML(fmtDate(d))}</strong><small>${escapeHTML(d)}</small></div>
+          <div class="admin-buttons"><button class="btn btn-danger btn-small delete-monday" data-date="${escapeHTML(d)}">Remove</button></div>
+        </div>`).join("") : `<div class="empty">No open Mondays. We are closed on every Monday.</div>`;
+      updateDateHint();
+    }
+
+    function dateProblem(d) {
+      if (!d) return "";
+      return new Date(d + "T00:00:00Z").getUTCDay() === 1 && !getOpenMondays().includes(d) ? "We don't work on Mondays. Please choose another date." : "";
+    }
+
+    function updateDateHint() {
+      const input = $("#bookingDate"), hint = $("#dateHint"), msg = $("#dateMsg");
+      if (!input) return;
+      const open = getOpenMondays();
+      hint.textContent = open.length ? "We are closed on Mondays except: " + open.map(fmtDate).join(", ") + "." : "We are closed on Mondays.";
+      const problem = dateProblem(input.value);
+      msg.textContent = problem; msg.hidden = !problem;
+      input.setCustomValidity(problem); input.setAttribute("aria-invalid", problem ? "true" : "false");
+    }
+
+    function showPaymentNotice(message, total) {
+      pendingMessage = message;
+      const amount = $("#payAmount");
+      amount.textContent = total ? total.replace("Estimated total", "Amount to send") : "";
+      amount.hidden = !total;
+      openModal("payModal");
+    }
+
+    function b64ToU8(b) {
+      const raw = atob((b + "=".repeat((4 - b.length % 4) % 4)).replace(/-/g, "+").replace(/_/g, "/"));
+      return Uint8Array.from(raw, c => c.charCodeAt(0));
+    }
+
+    async function enablePush() {
+      if (Notification.permission === "denied") { toast("Notifications are blocked in your browser settings"); return; }
+      const permission = await Notification.requestPermission();
+      if (permission !== "granted") return;
+      const reg = await navigator.serviceWorker.ready;
+      const { publicKey } = await apiRequest("/push");
+      const sub = await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: b64ToU8(publicKey) });
+      await apiRequest("/push", { method: "POST", body: JSON.stringify({ action: "subscribe", subscription: sub.toJSON() }) });
+      toast("Notifications are on");
+    }
+
+    function setupExtras() {
+      // special events
+      $("#specialPill").addEventListener("click", () => { renderSpecial(); openModal("specialModal"); });
+      $("#specialClose").addEventListener("click", () => {
+        try { sessionStorage.setItem("ff_special_hidden", getSpecial().map(x => x.id).join(",")); } catch (e) {}
+        $("#specialWrap").hidden = true;
+      });
+      $("#specialList").addEventListener("click", e => {
+        const b = e.target.closest("[data-ask]"); if (!b) return;
+        const x = getSpecial()[Number(b.dataset.ask)]; if (!x) return;
+        sendWhatsApp(`Hello Fizzlesfoods, I would like to know more about the special event "${x.name}" on ${fmtWhen(x)}.`);
+      });
+      const resetSpecial = () => { $("#specialAdminForm").reset(); $("#specialEditId").value = ""; };
+      $("#specialClearBtn").addEventListener("click", resetSpecial);
+      $("#specialAdminForm").addEventListener("submit", e => {
+        e.preventDefault();
+        const list = getSpecial(), id = $("#specialEditId").value || makeId("special");
+        const item = { id, name: $("#specialName").value.trim(), date: $("#specialDate").value, time: $("#specialTime").value, price: $("#specialPrice").value.trim(), description: $("#specialDescription").value.trim() };
+        if (!item.name || !item.date || !item.time) return;
+        const i = list.findIndex(x => x.id === id);
+        if (i >= 0) list[i] = item; else list.push(item);
+        if (writeJSON(STORAGE.special, list)) { resetSpecial(); renderSpecial(); alert("Special event saved. Customers can see it now, and subscribers get a notification."); }
+      });
+      $("#specialAdminList").addEventListener("click", e => {
+        const edit = e.target.closest(".edit-special"), del = e.target.closest(".delete-special");
+        if (edit) {
+          const x = getSpecial().find(v => v.id === edit.dataset.id); if (!x) return;
+          $("#specialEditId").value = x.id; $("#specialName").value = x.name; $("#specialDate").value = x.date; $("#specialTime").value = x.time;
+          $("#specialPrice").value = x.price || ""; $("#specialDescription").value = x.description || "";
+          document.getElementById("ownerSpecial").scrollIntoView({ block: "start" });
+        }
+        if (del && confirm("Delete this special event?")) { writeJSON(STORAGE.special, getSpecial().filter(x => x.id !== del.dataset.id)); renderSpecial(); }
+      });
+      $("#broadcastForm").addEventListener("submit", async e => {
+        e.preventDefault();
+        try {
+          const r = await apiRequest("/push", { method: "POST", body: JSON.stringify({ action: "broadcast", title: $("#broadcastTitle").value, body: $("#broadcastBody").value }) });
+          alert(`Notification sent to ${r.sent} customer(s).`); $("#broadcastForm").reset();
+        } catch (err) { alert(err.message || "The notification could not be sent."); }
+      });
+      // games
+      $("#gameClearBtn").addEventListener("click", resetGameForm);
+      $("#gameAdminForm").addEventListener("submit", e => {
+        e.preventDefault();
+        const games = getGames(), id = $("#gameEditId").value || makeId("game");
+        const item = { id, name: $("#gameName").value.trim(), price: $("#gamePrice").value.trim(), description: $("#gameDescription").value.trim(), image: $("#gameImageUrl").value };
+        const i = games.findIndex(x => x.id === id);
+        if (i >= 0) games[i] = item; else games.push(item);
+        if (writeJSON(STORAGE.games, games)) { resetGameForm(); renderGames(); alert("Game saved successfully."); }
+      });
+      $("#gameAdminList").addEventListener("click", e => {
+        const edit = e.target.closest(".edit-game"), del = e.target.closest(".delete-game");
+        if (edit) fillGameForm(edit.dataset.id);
+        if (del && confirm("Delete this game?")) { writeJSON(STORAGE.games, getGames().filter(x => x.id !== del.dataset.id)); renderGames(); }
+      });
+      // open Mondays
+      $("#mondayForm").addEventListener("submit", e => {
+        e.preventDefault();
+        const d = $("#mondayDate").value, msg = $("#mondayMsg");
+        let problem = "";
+        if (new Date(d + "T00:00:00Z").getUTCDay() !== 1) problem = "That date is not a Monday.";
+        else if (d < todayStr()) problem = "That Monday has already passed.";
+        msg.textContent = problem; msg.hidden = !problem;
+        if (problem) return;
+        const days = getOpenMondays(); if (!days.includes(d)) days.push(d);
+        if (writeJSON(STORAGE.openMondays, days.sort())) { $("#mondayForm").reset(); renderMondays(); }
+      });
+      $("#mondayList").addEventListener("click", e => {
+        const b = e.target.closest(".delete-monday"); if (!b) return;
+        writeJSON(STORAGE.openMondays, getOpenMondays().filter(d => d !== b.dataset.date)); renderMondays();
+      });
+      // booking date + payment + account prompts
+      $("#bookingDate").addEventListener("input", updateDateHint);
+      $("#payWhatsApp").addEventListener("click", () => { if (pendingMessage) sendWhatsApp(pendingMessage); });
+      $("#orderCreateAcct").addEventListener("click", () => { closeModal("orderModal"); openAccountRegister($("#customerName").value.trim(), $("#customerPhone").value.trim()); });
+      // notifications
+      if ("serviceWorker" in navigator && "PushManager" in window && "Notification" in window) {
+        let dismissed = false;
+        try { dismissed = Date.now() - Number(localStorage.getItem("ff_notify_dismissed") || 0) < 14 * 864e5; } catch (e) {}
+        if (Notification.permission === "default" && !dismissed) setTimeout(() => { $("#notifyBar").hidden = false; }, 5000);
+        $("#notifyYes").addEventListener("click", async () => { $("#notifyBar").hidden = true; try { await enablePush(); } catch (err) { toast("Notifications could not be turned on"); } });
+        $("#notifyNo").addEventListener("click", () => { $("#notifyBar").hidden = true; try { localStorage.setItem("ff_notify_dismissed", String(Date.now())); } catch (e) {} });
+      }
+      // keyboard: Escape closes the top layer, Tab stays inside it
+      document.addEventListener("keydown", e => {
+        const modal = [...document.querySelectorAll(".modal.open")].pop();
+        const layer = modal ? (modal.querySelector(".modal-card") || modal) : (!$("#menuPage").hidden ? $("#menuPage") : null);
+        if (!layer) return;
+        if (e.key === "Escape") { e.preventDefault(); if (modal) closeModal(modal.id); else $("#mpBack").click(); return; }
+        if (e.key !== "Tab") return;
+        const items = [...layer.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]):not([type=hidden]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])')].filter(el => el.offsetParent !== null);
+        if (!items.length) return;
+        const first = items[0], last = items[items.length - 1], active = document.activeElement;
+        if (e.shiftKey && (active === first || active === layer)) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && active === last) { e.preventDefault(); first.focus(); }
+      });
+    }
+
     async function init() {
       $("#year").textContent = new Date().getFullYear();
       setupTheme();
@@ -2854,6 +3271,9 @@
       });
       renderFoods();
       renderDrinks();
+      renderGames();
+      renderSpecial();
+      renderMondays();
       renderEvents();
       renderGallery();
       renderBookingHistory();
@@ -2864,6 +3284,7 @@
       setupInstall();
       setupTextSize();
       setupAccount();
+      setupExtras();
       loadAccount();
       setupOwner();
       setupCustomerActions();
@@ -2874,6 +3295,9 @@
         if (await loadRemoteState() && stateChanged) {
           renderFoods();
           renderDrinks();
+          renderGames();
+          renderSpecial();
+          renderMondays();
           renderEvents();
           renderGallery();
         }
