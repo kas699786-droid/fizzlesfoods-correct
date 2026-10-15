@@ -1,4 +1,4 @@
-const CACHE = "fizzlesfoods-v3";
+const CACHE = "fizzlesfoods-v4";
 const SHELL = ["/", "/logo.jpg", "/icon-192.png", "/icon-512.png"];
 
 self.addEventListener("install", (e) => {
