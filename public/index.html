@@ -898,10 +898,8 @@
     .special-item{padding:12px 0;border-bottom:1px solid var(--line)}.special-item h4{margin-bottom:4px}.special-item p{margin:4px 0}
     .notify-bar .btn{min-height:36px}
     .date-msg{color:#b3261e;font-weight:700;font-size:.9rem;margin-top:4px}.date-msg[hidden]{display:none}
-    .badge.paid{background:#e3f6e8;color:#0b5a28;border:1px solid #0b5a28}
-    .badge.unpaid{background:#fff2d6;color:#7a4b00;border:1px solid #7a4b00}
     .my-note{display:block;margin-top:6px;color:var(--muted)}
-    .pay-text{margin:10px 0;line-height:1.55}.pay-ref{background:#071a2b;color:#ffd86b;padding:2px 8px;letter-spacing:.06em}
+    .pay-text{margin:10px 0;line-height:1.55}
     #payModal,#specialModal{z-index:230}
     @media(prefers-reduced-motion:reduce){.slides{transition:none!important}}
     #location,#about{content-visibility:auto;contain-intrinsic-size:1px 600px}
@@ -910,17 +908,62 @@
     .about .section-kicker,.hero .section-kicker{color:#ffd86b}
     body[data-theme="dark"] .contact-card a,body[data-theme="dark"] .contact-card .contact-line strong{color:#5fd68a}
     body[data-theme="dark"] .section-kicker{color:#ffd86b}
+      /* ===== v3: modern polish ===== */
+    html{scroll-padding-top:88px;-webkit-text-size-adjust:100%}
+    *{-webkit-tap-highlight-color:transparent}
+    h1,h2,h3{text-wrap:balance}
+    p{text-wrap:pretty}
+    .hero-media{gap:20px}
+    .hero-photo,.hero-gallery .slider{box-sizing:border-box;border-bottom:4px solid var(--gold)}
+    .hero-gallery{background:transparent}
+    .gallery-box-title{border-left:4px solid var(--gold);background:rgba(7,26,43,.9);padding:7px 14px 7px 12px;font-size:.76rem;letter-spacing:.12em;font-weight:800}
+    .gallery-category-badge{position:absolute;top:0;right:0;left:auto;bottom:auto;border-radius:0;background:var(--gold);color:#071a2b;padding:7px 12px;font-size:.74rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .slider-arrow{background:rgba(7,26,43,.72);color:#fff;border:1px solid rgba(255,255,255,.35)}
+    .dot{position:relative;width:10px;height:10px}
+    .dot::after{content:"";position:absolute;inset:-17px -5px}
+    .dot.active{width:26px}
+    .hero-grid{padding-top:30px}
+    .section-head h2::after{content:"";display:block;width:56px;height:3px;background:var(--gold);margin:14px auto 0}
+    .btn{transition:transform .15s ease,box-shadow .15s ease,background-color .15s ease}
+    .btn:active{transform:scale(.98)}
+    .pop-stack{position:fixed;left:12px;right:12px;bottom:12px;z-index:70;display:flex;flex-direction:column;align-items:flex-start;gap:8px;pointer-events:none}
+    .pop{pointer-events:auto;display:flex;align-items:center;gap:10px;width:min(100%,360px);padding:6px 6px 6px 12px;background:rgba(255,255,255,.97);color:#071a2b;border:1px solid rgba(7,26,43,.12);border-left:4px solid var(--gold);border-radius:14px;box-shadow:0 8px 28px rgba(7,26,43,.22)}
+    .pop[hidden]{display:none}
+    body[data-theme="dark"] .pop{background:rgba(15,34,49,.97);color:#fff;border-color:rgba(255,255,255,.16);border-left-color:var(--gold)}
+    .pop-special{padding:0}
+    .pop-main{display:flex;align-items:center;gap:10px;flex:1;min-width:0;background:none;border:0;padding:6px 6px 6px 12px;text-align:left;color:inherit;font:inherit;cursor:pointer}
+    .pop-ico{font-size:1.25rem;line-height:1}
+    .pop-text{display:flex;flex-direction:column;min-width:0;flex:1;line-height:1.25}
+    .pop-text strong{font-size:.82rem}
+    .pop-text small{font-size:.76rem;opacity:.85;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .pop-btn,.pop-cta{flex:none;background:#071a2b;color:#fff;border:0;border-radius:999px;padding:0 14px;min-height:36px;display:inline-flex;align-items:center;font-weight:800;font-size:.8rem;cursor:pointer}
+    body[data-theme="dark"] .pop-btn,body[data-theme="dark"] .pop-cta{background:var(--gold);color:#071a2b}
+    .pop-x{flex:none;width:40px;height:40px;border:0;border-radius:50%;background:none;color:inherit;font-size:.95rem;opacity:.75;cursor:pointer}
+    .pop-x:hover{opacity:1;background:rgba(127,127,127,.15)}
+    body.menu-open .pop-stack{bottom:84px}
+    .sent-note{padding:10px 12px;border-left:4px solid var(--gold);background:var(--card-bg);font-weight:700;line-height:1.45;margin-bottom:12px}
+    .pay-actions{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+    .pay-actions .btn{width:100%}
+    .link-btn{background:none;border:0;color:inherit;text-decoration:underline;font:inherit;padding:10px 0;min-height:44px;cursor:pointer}
+    .momo{background:#071a2b;color:#ffd86b;padding:2px 8px;letter-spacing:.05em;white-space:nowrap}
+    .mp-card .card-image img{width:100%;height:100%;object-fit:cover}
+    @media(max-width:380px){.pop-text small{display:none}}
+      .toast{bottom:auto;top:calc(env(safe-area-inset-top,0px) + 14px)}
+      .owner-dot::before{inset:-16px}
+    .mp-back,.mp-cart,.menu-btn,#menuBtn{min-width:44px;min-height:44px}
+      /* thin white rules instead of the yellow lines, and a slightly larger gap */
+    .tile-label{border-top:1px solid #fff}
+    .hero-photo,.hero-gallery .slider{border-bottom:1px solid #fff}
+    .hero-media{gap:30px}
   </style>
   <script>try{var ts=localStorage.getItem("ff_textsize");if(ts&&+ts>=70&&+ts<=170)document.documentElement.style.fontSize=ts+"%"}catch(e){}</script>
-  <link rel="preload" as="image" href="/hero.jpg" fetchpriority="high">
+  <link rel="preload" as="image" imagesrcset="/hero-640.jpg 640w, /hero.jpg 1280w" imagesizes="(min-width:900px) 50vw, 100vw" fetchpriority="high">
 </head>
 
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
   <div class="topbar"><button class="owner-dot" id="ownerBtn" type="button" aria-label="Owner login"></button>FIZZLESFOODS & FIZZLESFOODS EVENTS — Taste the Quality • Celebrate the Moment.</div>
-  <div class="install-bar" id="installBar" hidden><span id="installText">Install our app on your phone for faster ordering.</span><button class="btn btn-primary btn-small" id="installBtn" type="button">Install App</button><button class="install-close" id="installClose" type="button" aria-label="Dismiss">✕</button></div>
-
-  <div class="install-bar notify-bar" id="notifyBar" hidden><span>Get notified about special events and updates.</span><button class="btn btn-dark btn-small" id="notifyYes" type="button">Allow notifications</button><button class="install-close" id="notifyNo" type="button" aria-label="Not now">✕</button></div>
+  
   <nav class="nav" aria-label="Main navigation">
     <div class="nav-inner">
       <a class="brand" href="#home" aria-label="FIZZLESFOODS home">
@@ -949,7 +992,7 @@
   <main id="main" tabindex="-1">
     <section class="hero" id="home" aria-labelledby="heroTitle">
       <div class="hero-media">
-        <img class="hero-photo" src="/hero.jpg" alt="The Fizzles restaurant at night with warm string lights and the glowing FIZZLES sign" width="1280" height="720" fetchpriority="high" decoding="async">
+        <img class="hero-photo" src="/hero.jpg" srcset="/hero-640.jpg 640w, /hero.jpg 1280w" sizes="(min-width:900px) 50vw, 100vw" alt="The Fizzles restaurant in daylight, with its two-storey terrace, string lights and the FIZZLES sign" width="1280" height="720" fetchpriority="high" decoding="async">
         <div class="hero-gallery" role="region" aria-label="Photo gallery">
           <div class="gallery-box-title" id="galleryTitle1">Gallery Box</div>
           <div class="slider" id="gallerySlider1">
@@ -982,11 +1025,11 @@
           <h2>View our menu</h2>
         </div>
         <div class="menu-tiles">
-          <button class="tile" type="button" data-menu="food"><span class="tile-img" id="tileImg_food" aria-hidden="true">🍽️</span><span class="tile-label">Meals</span></button>
-          <button class="tile" type="button" data-menu="drink"><span class="tile-img" id="tileImg_drink" aria-hidden="true">🥤</span><span class="tile-label">Drinks / Beverages</span></button>
-          <button class="tile" type="button" data-menu="game"><span class="tile-img" id="tileImg_game" aria-hidden="true">🎮</span><span class="tile-label">Games</span></button>
-          <button class="tile" type="button" data-menu="event"><span class="tile-img" id="tileImg_event" aria-hidden="true">🎉</span><span class="tile-label">Events</span></button>
-          <button class="tile" type="button" id="tileCatering"><span class="tile-img" aria-hidden="true">🥘</span><span class="tile-label">Event Catering</span></button>
+          <button class="tile" type="button" data-menu="food"><span class="tile-img" id="tileImg_food" aria-hidden="true"><img src="/art/meal.svg" alt="" width="400" height="300" loading="lazy" decoding="async"></span><span class="tile-label">Meals</span></button>
+          <button class="tile" type="button" data-menu="drink"><span class="tile-img" id="tileImg_drink" aria-hidden="true"><img src="/art/drink.svg" alt="" width="400" height="300" loading="lazy" decoding="async"></span><span class="tile-label">Drinks / Beverages</span></button>
+          <button class="tile" type="button" data-menu="game"><span class="tile-img" id="tileImg_game" aria-hidden="true"><img src="/art/game.svg" alt="" width="400" height="300" loading="lazy" decoding="async"></span><span class="tile-label">Games</span></button>
+          <button class="tile" type="button" data-menu="event"><span class="tile-img" id="tileImg_event" aria-hidden="true"><img src="/art/event.svg" alt="" width="400" height="300" loading="lazy" decoding="async"></span><span class="tile-label">Events</span></button>
+          <button class="tile" type="button" id="tileCatering"><span class="tile-img" aria-hidden="true"><img src="/art/catering.svg" alt="" width="400" height="300" loading="lazy" decoding="async"></span><span class="tile-label">Event Catering</span></button>
         </div>
         <div class="quick-links">
           <a href="#location">📍 Location</a>
@@ -1085,9 +1128,19 @@
   <footer>
     © <span id="year"></span> FIZZLESFOODS & FIZZLESFOODS EVENTS. All rights reserved.
   </footer>
-  <div class="special-wrap" id="specialWrap" hidden>
-    <button class="special-pill" id="specialPill" type="button" aria-haspopup="dialog"><span aria-hidden="true">🎉</span><span><strong>Special event</strong><small id="specialPillText"></small></span></button>
-    <button class="special-close" id="specialClose" type="button" aria-label="Hide special event notice">✕</button>
+  <div class="pop-stack" id="popStack">
+    <div class="pop pop-special" id="specialWrap" hidden>
+      <button class="pop-main" id="specialPill" type="button" aria-haspopup="dialog"><span class="pop-ico" aria-hidden="true">🎉</span><span class="pop-text"><strong>Special event</strong><small id="specialPillText"></small></span><span class="pop-cta" aria-hidden="true">View</span></button>
+      <button class="pop-x" id="specialClose" type="button" aria-label="Hide special event notice">✕</button>
+    </div>
+    <div class="pop" id="installBar" hidden>
+      <span class="pop-ico" aria-hidden="true">📲</span><span class="pop-text"><strong>Install our app</strong><small id="installText">Faster ordering from your home screen</small></span>
+      <button class="pop-btn" id="installBtn" type="button">Install</button><button class="pop-x" id="installClose" type="button" aria-label="Dismiss">✕</button>
+    </div>
+    <div class="pop" id="notifyBar" hidden>
+      <span class="pop-ico" aria-hidden="true">🔔</span><span class="pop-text"><strong>Stay updated</strong><small>Special events and new menu items</small></span>
+      <button class="pop-btn" id="notifyYes" type="button">Allow</button><button class="pop-x" id="notifyNo" type="button" aria-label="Not now">✕</button>
+    </div>
   </div>
 
   <div class="menu-page" id="menuPage" role="dialog" aria-modal="true" aria-label="Menu" hidden>
@@ -1124,7 +1177,7 @@
             <div class="field full"><label for="bookingNotes">Additional notes (optional)</label><textarea id="bookingNotes" maxlength="800" placeholder="Any special request or additional information"></textarea></div>
           </div>
           <div class="field" id="orderAccountBox" style="margin-top:10px">
-            <p class="privacy-note" style="margin:0 0 8px"><strong>Keep evidence of your payment.</strong> To have proof that you paid after booking, create an account with just your phone number and password.</p>
+            <p class="privacy-note" style="margin:0 0 8px"><strong>Optional:</strong> create an account with just your phone number and password to view your booking history. You can book without one.</p>
             <button type="button" class="btn btn-dark btn-small" id="orderCreateAcct">Create account</button>
             <label for="orderPassword" style="margin-top:12px">Or set a password now (optional)</label>
             <input id="orderPassword" type="password" minlength="8" maxlength="100" autocomplete="new-password" placeholder="At least 8 characters">
@@ -1180,15 +1233,17 @@
 
   <div class="modal" id="payModal" role="dialog" aria-modal="true" aria-labelledby="payTitle">
     <div class="modal-card">
-      <div class="modal-head"><h3 id="payTitle">Booking received</h3><button class="close" data-close="payModal" aria-label="Close">×</button></div>
+      <div class="modal-head"><h3 id="payTitle">Booking sent</h3><button class="close" data-close="payModal" aria-label="Close">×</button></div>
       <div class="modal-body">
-        <p><span class="badge unpaid">Booking not secured yet</span></p>
-        <p class="pay-text"><strong>To secure your booking spot</strong>, contact the same WhatsApp number you are sending this booking to (<strong>0242992579</strong>) and send your money through mobile money with the reference <strong class="pay-ref">fizzle</strong>.</p>
+        <p class="sent-note" id="sentNote"></p>
+        <p class="pay-text">Dear Customer,</p>
+        <p class="pay-text">Kindly send the same amount as the total cost of your booking to this MoMo number: <strong class="momo" id="momoNumber">0247462693</strong>. Please make sure the account name is <strong>Saka Ampomah Gideon</strong> before you send.</p>
+        <p class="pay-text">Use your name as the payment reference. After sending, please send the payment evidence to the same WhatsApp number you sent your booking to.</p>
         <p class="notice" id="payAmount" hidden></p>
-        <p class="pay-text">When we confirm your payment, your booking changes to <span class="badge paid">Booking secured</span>. You can check it any time under My Account.</p>
-        <div class="modal-actions">
-          <button type="button" class="btn btn-dark" data-close="payModal">Close</button>
-          <button type="button" class="btn btn-primary" id="payWhatsApp">Send booking on WhatsApp</button>
+        <div class="pay-actions">
+          <button type="button" class="btn btn-primary" id="payEvidence">Send evidence on WhatsApp</button>
+          <button type="button" class="btn btn-dark" id="payCopy">Copy MoMo number</button>
+          <button type="button" class="link-btn" id="payAgain">Open my booking in WhatsApp again</button>
         </div>
       </div>
     </div>
@@ -1491,7 +1546,7 @@
 
         <section class="owner-section" id="ownerHistory">
           <h4>Booking History</h4>
-          <div class="notice">Each booking shows "Booking not secured" until you confirm the mobile money payment (reference fizzle) and tap "Mark payment received". Then it turns green, and it is locked until 12 hours after its date.</div>
+          <div class="notice">Bookings are added here when the customer sends the booking to WhatsApp. A booking leaves this list by itself once its date (or event time) has passed, and you can remove any booking yourself at any time.</div>
           <div class="admin-list" id="bookingHistoryList"></div>
         </section>
 
@@ -1821,12 +1876,17 @@
       if (event.key === STORAGE.events) dataCache.delete("__events__");
     });
 
+    function updateScrollLock() {
+      document.body.classList.toggle("no-scroll", !!document.querySelector(".modal.open") || !$("#menuPage").hidden);
+      document.body.style.overflow = "";
+    }
+
     function openModal(id) {
       const modal = document.getElementById(id);
       if (!modal) return;
       modal._opener = document.activeElement;
       modal.classList.add("open");
-      document.body.style.overflow = "hidden";
+      updateScrollLock();
       const card = modal.querySelector(".modal-card") || modal;
       card.setAttribute("tabindex", "-1");
       setTimeout(() => card.focus({ preventScroll: true }), 30);
@@ -1836,14 +1896,14 @@
       const modal = document.getElementById(id);
       if (!modal) return;
       modal.classList.remove("open");
-      if (!$(".modal.open") && $("#menuPage").hidden) document.body.style.overflow = "";
+      updateScrollLock();
       const opener = modal._opener; modal._opener = null;
       if (opener && document.contains(opener)) { try { opener.focus({ preventScroll: true }); } catch (e) {} }
     }
 
     function closeAllModals() {
       $$(".modal.open").forEach(m => m.classList.remove("open"));
-      document.body.style.overflow = "";
+      updateScrollLock();
     }
 
     function whatsappURL(message) {
@@ -1865,9 +1925,9 @@
     }
 
     function cardImage(item, label) {
-      return item.image && /^\/api\/image\?id=[a-f0-9]{24}$/.test(item.image)
-        ? `<img src="${item.image}" alt="${escapeHTML(item.name)}" loading="lazy" decoding="async">`
-        : `<div><span style="font-size:2.2rem;line-height:1.2">${{ Meal: "\u{1F37D}\uFE0F", Drink: "\u{1F964}", Event: "\u{1F389}" }[label] || ""}</span><br><strong>${label}</strong></div>`;
+      if (item.image && /^\/api\/image\?id=[a-f0-9]{24}$/.test(item.image)) return `<img src="${item.image}" alt="${escapeHTML(item.name)}" loading="lazy" decoding="async">`;
+      const slug = { Meal: "meal", Drink: "drink", Game: "game", Event: "event" }[label] || "meal";
+      return `<img class="card-art" src="/art/${slug}.svg" alt="" width="400" height="300" loading="lazy" decoding="async">`;
     }
 
     function updatePhotoPreview(prefix) {
@@ -2357,10 +2417,7 @@
       const box = $("#bookingHistoryList");
       if (!box) return;
       const history = getHistory();
-      box.innerHTML = history.length ? history.map(item => {
-        const locked = item.paid && Number(item.lockUntil) > Date.now();
-        const canUndo = item.paid && Date.now() - Number(item.paidAt) < 15 * 60 * 1000;
-        return `
+      box.innerHTML = history.length ? history.map(item => `
         <div class="admin-item">
           <div class="history-meta">
             <strong>${escapeHTML(item.selected)}</strong>
@@ -2368,15 +2425,9 @@
             <small>Customer: ${escapeHTML(item.customerName)} \u00b7 ${escapeHTML(item.customerPhone)}</small>
             ${item.itemQuantity ? `<small>Items: ${escapeHTML(item.itemQuantity)} \u00b7 Total: ${escapeHTML(item.totalCost || "Contact us")}</small>` : ""}
             ${item.notes ? `<small>Notes: ${escapeHTML(item.notes)}</small>` : ""}
-            <span class="badge ${item.paid ? "paid" : "unpaid"}">${item.paid ? "Booking secured" : "Booking not secured"}</span>
-            ${locked ? `<small>Locked until ${escapeHTML(new Date(Number(item.lockUntil)).toLocaleString("en-GB", { dateStyle: "medium", timeStyle: "short", timeZone: "UTC" }))}</small>` : ""}
           </div>
-          <div class="admin-buttons">
-            ${item.paid ? (canUndo ? `<button class="btn btn-dark btn-small undo-paid" data-id="${escapeHTML(item.id)}">Undo</button>` : "") : `<button class="btn btn-primary btn-small mark-paid" data-id="${escapeHTML(item.id)}">Mark payment received</button>`}
-            ${locked ? `<button class="btn btn-danger btn-small" disabled>Locked</button>` : `<button class="btn btn-danger btn-small delete-history" data-id="${escapeHTML(item.id)}">Remove</button>`}
-          </div>
-        </div>`;
-      }).join("") : `<div class="empty">No active bookings in history.</div>`;
+          <div class="admin-buttons"><button class="btn btn-danger btn-small delete-history" data-id="${escapeHTML(item.id)}">Remove</button></div>
+        </div>`).join("") : `<div class="empty">No active bookings in history.</div>`;
     }
 
     function setupOwner() {
@@ -2535,14 +2586,6 @@
       });
 
       $("#bookingHistoryList").addEventListener("click", async event => {
-        const paidBtn = event.target.closest(".mark-paid,.undo-paid");
-        if (paidBtn) {
-          try {
-            await apiRequest(`/bookings?id=${encodeURIComponent(paidBtn.dataset.id)}`, { method: "PATCH", body: JSON.stringify({ paid: paidBtn.classList.contains("mark-paid") }) });
-            await loadRemoteBookings();
-          } catch (error) { alert(error.message || "The status could not be changed."); }
-          return;
-        }
         const button = event.target.closest(".delete-history");
         if (!button) return;
         const id = button.dataset.id;
@@ -2805,7 +2848,7 @@
       menuOpener = document.activeElement; menuType = MENUS[type] ? type : "food"; menuCat = ""; $("#mpSearch").value = "";
       const page = $("#menuPage");
       page.hidden = false; page.scrollTop = 0;
-      document.body.classList.add("no-scroll", "menu-open");
+      document.body.classList.add("menu-open"); updateScrollLock();
       if (location.hash !== "#menu") location.hash = "#menu";
       renderMenu(); saveCart();
       setTimeout(() => $("#mpBack").focus({ preventScroll: true }), 30);
@@ -2813,7 +2856,7 @@
 
     function closeMenu() {
       $("#menuPage").hidden = true;
-      document.body.classList.remove("no-scroll", "menu-open");
+      document.body.classList.remove("menu-open"); updateScrollLock();
       if (menuOpener && document.contains(menuOpener)) { try { menuOpener.focus({ preventScroll: true }); } catch (e) {} }
       menuOpener = null;
     }
@@ -2876,11 +2919,6 @@
         const bookingDate = $("#bookingDate").value, notes = $("#bookingNotes").value.trim();
         if (!customerName || !customerPhone || !bookingDate) return;
         if (dateProblem(bookingDate)) { updateDateHint(); $("#bookingDate").focus(); return; }
-        if (!customer && !($("#orderPassword").value)) {
-          if (confirm("To have evidence that you made payment after booking, create an account with just your phone number and password.\n\nPress OK to create your account now, or Cancel to continue as a guest.")) {
-            closeModal("orderModal"); openAccountRegister(customerName, customerPhone); return;
-          }
-        }
         const btn = $("#orderSubmit"); btn.disabled = true;
         let result = {};
         try {
@@ -2899,11 +2937,13 @@
             ? `${i + 1}. Event: ${l.item.name}${l.item.duration ? " (" + l.item.duration + ")" : ""} - ${l.item.price || "Contact us"}`
             : `${i + 1}. ${TYPE_LABEL[l.type]}: ${l.item.name} x${l.qty} - ${l.item.price || "Contact us"} each = ${formatFoodTotal(l.item.price, l.qty)}`),
           total ? "" : null, total || null, "",
-          `Customer name: ${customerName}`, `Customer phone: ${customerPhone}`, `Preferred date: ${bookingDate}`, `Additional notes: ${notes || "None"}`, "", "Payment: I will send the money by mobile money to this same number with the reference: fizzle", "Status: NOT SECURED until my payment is received."
+          `Customer name: ${customerName}`, `Customer phone: ${customerPhone}`, `Preferred date: ${bookingDate}`, `Additional notes: ${notes || "None"}`
         ].filter(x => x !== null).join("\n");
         cart = []; saveCart(); closeModal("orderModal"); $("#orderForm").reset(); if (result.customer) customer = result.customer; updateAccountUI(); btn.disabled = false;
         if (!$("#menuPage").hidden) renderMenu();
-        showPaymentNotice(message, total);
+        pendingMessage = message;
+        lastOrder = { name: customerName, amount: total ? total.replace(/^Estimated total:\s*/, "").replace(/\s*\(.*\)$/, "") : "" };
+        showBookingSent(openWhatsApp(message));
       });
       saveCart();
     }
@@ -2914,33 +2954,34 @@
         const register = () => navigator.serviceWorker.register("/sw.js").catch(() => {});
         if (document.readyState === "complete") register(); else window.addEventListener("load", register);
       }
-      const bar = $("#installBar"), btn = $("#installBtn"), nav = $("#installNav");
-      if (window.matchMedia("(display-mode: standalone)").matches || navigator.standalone) return;
-      let dismissed = false, deferred = null;
-      try { dismissed = Date.now() - Number(localStorage.getItem("ff_install_dismissed") || 0) < 7 * 864e5; } catch (e) {}
+      const installBar = $("#installBar"), notifyBar = $("#notifyBar"), btn = $("#installBtn"), nav = $("#installNav");
+      const standalone = window.matchMedia("(display-mode: standalone)").matches || navigator.standalone;
+      const recently = (key, days) => { try { return Date.now() - Number(localStorage.getItem(key) || 0) < days * 864e5; } catch (e) { return false; } };
+      const remember = key => { try { localStorage.setItem(key, String(Date.now())); } catch (e) {} };
+      let deferred = null, installReady = false, notifyReady = false;
+      const update = () => { installBar.hidden = !installReady; notifyBar.hidden = !(notifyReady && !installReady); }; // only one prompt at a time
       const doInstall = async () => {
         if (!deferred) return;
         deferred.prompt();
         try { await deferred.userChoice; } catch (e) {}
-        deferred = null; bar.hidden = true; nav.hidden = true;
+        deferred = null; installReady = false; nav.hidden = true; update();
       };
-      window.addEventListener("beforeinstallprompt", e => {
-        e.preventDefault(); deferred = e;
-        nav.hidden = false;
-        if (!dismissed) bar.hidden = false;
-      });
-      window.addEventListener("appinstalled", () => { bar.hidden = true; nav.hidden = true; deferred = null; toast("App installed"); });
-      if (/iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream) {
-        $("#installText").textContent = "Install our app: tap the Share button, then \u201cAdd to Home Screen\u201d.";
-        btn.hidden = true;
-        if (!dismissed) bar.hidden = false;
+      if (!standalone) {
+        window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); deferred = e; nav.hidden = false; installReady = !recently("ff_install_dismissed", 7); update(); });
+        window.addEventListener("appinstalled", () => { installReady = false; nav.hidden = true; deferred = null; update(); toast("App installed"); });
+        if (/iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream) {
+          $("#installText").textContent = "Tap Share, then Add to Home Screen";
+          btn.hidden = true; installReady = !recently("ff_install_dismissed", 7); update();
+        }
       }
       btn.addEventListener("click", doInstall);
       nav.addEventListener("click", doInstall);
-      $("#installClose").addEventListener("click", () => {
-        bar.hidden = true;
-        try { localStorage.setItem("ff_install_dismissed", String(Date.now())); } catch (e) {}
-      });
+      $("#installClose").addEventListener("click", () => { installReady = false; remember("ff_install_dismissed"); update(); });
+      if ("serviceWorker" in navigator && "PushManager" in window && "Notification" in window) {
+        if (Notification.permission === "default" && !recently("ff_notify_dismissed", 14)) setTimeout(() => { notifyReady = true; update(); }, 5000);
+        $("#notifyYes").addEventListener("click", async () => { notifyReady = false; update(); try { await enablePush(); } catch (err) { toast("Notifications could not be turned on"); } });
+        $("#notifyNo").addEventListener("click", () => { notifyReady = false; remember("ff_notify_dismissed"); update(); });
+      }
     }
 
     /* ---------- customer accounts ---------- */
@@ -2978,10 +3019,9 @@
         const groups = {};
         bookings.forEach(b => { const k = b.orderId || b.id; (groups[k] = groups[k] || []).push(b); });
         box.innerHTML = Object.values(groups).map(g => {
-          const upcoming = g.some(b => Number(b.expiresAt) > Date.now()), secured = g.every(b => b.paid);
-          return `<div class="my-order"><div class="my-order-head"><strong>${escapeHTML(g[0].bookingDate)}</strong><span class="badge ${secured ? "paid" : "unpaid"}">${secured ? "Booking secured" : "Booking not secured"}</span></div>` +
-            g.map(b => `<div class="my-line">${escapeHTML(b.selected)}${b.itemQuantity ? " \u00d7 " + b.itemQuantity : ""}${b.duration ? " (" + escapeHTML(b.duration) + ")" : ""}<small>${escapeHTML(b.totalCost || b.price || "")}</small></div>`).join("") +
-            `<small class="my-note">${secured ? "Payment received. Thank you!" : (upcoming ? "To secure it, send your mobile money to 0242992579 on WhatsApp with the reference fizzle." : "Completed without payment confirmation.")}</small></div>`;
+          const upcoming = g.some(b => Number(b.expiresAt) > Date.now());
+          return `<div class="my-order"><div class="my-order-head"><strong>${escapeHTML(g[0].bookingDate)}</strong><span class="badge ${upcoming ? "up" : "done"}">${upcoming ? "Upcoming" : "Completed"}</span></div>` +
+            g.map(b => `<div class="my-line">${escapeHTML(b.selected)}${b.itemQuantity ? " \u00d7 " + b.itemQuantity : ""}${b.duration ? " (" + escapeHTML(b.duration) + ")" : ""}<small>${escapeHTML(b.totalCost || b.price || "")}</small></div>`).join("") + `</div>`;
         }).join("");
       } catch (e) { box.innerHTML = `<div class="empty">${escapeHTML(e.message)}</div>`; }
     }
@@ -3063,7 +3103,7 @@
     const fmtDate = d => new Date(d + "T00:00:00Z").toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" });
     const fmtTime = t => { const [h, m] = String(t).split(":").map(Number); return `${((h + 11) % 12) + 1}:${String(m).padStart(2, "0")} ${h < 12 ? "AM" : "PM"}`; };
     const fmtWhen = x => `${fmtDate(x.date)} \u00b7 ${fmtTime(x.time)}`;
-    let pendingMessage = "";
+    let pendingMessage = "", lastOrder = { name: "", amount: "" };
 
     function renderGames() { renderGameAdminList(); refreshMenu(); }
 
@@ -3139,11 +3179,17 @@
       input.setCustomValidity(problem); input.setAttribute("aria-invalid", problem ? "true" : "false");
     }
 
-    function showPaymentNotice(message, total) {
-      pendingMessage = message;
+    function openWhatsApp(message) {
+      const w = window.open(whatsappURL(message), "_blank");
+      if (w) { try { w.opener = null; } catch (e) {} }
+      return !!w;
+    }
+
+    function showBookingSent(opened) {
+      $("#sentNote").textContent = opened ? "Your booking is open in WhatsApp. Please press Send there so we receive it." : "WhatsApp did not open by itself. Tap \u201cOpen my booking in WhatsApp again\u201d below to send your booking.";
       const amount = $("#payAmount");
-      amount.textContent = total ? total.replace("Estimated total", "Amount to send") : "";
-      amount.hidden = !total;
+      amount.textContent = lastOrder.amount ? "Amount to send: " + lastOrder.amount : "";
+      amount.hidden = !lastOrder.amount;
       openModal("payModal");
     }
 
@@ -3236,16 +3282,16 @@
       });
       // booking date + payment + account prompts
       $("#bookingDate").addEventListener("input", updateDateHint);
-      $("#payWhatsApp").addEventListener("click", () => { if (pendingMessage) sendWhatsApp(pendingMessage); });
+      $("#payAgain").addEventListener("click", () => { if (pendingMessage) openWhatsApp(pendingMessage) || sendWhatsApp(pendingMessage); });
+      $("#payEvidence").addEventListener("click", () => {
+        const text = `Hello Fizzlesfoods, I have sent my MoMo payment for my booking.\nName: ${lastOrder.name}${lastOrder.amount ? "\nAmount: " + lastOrder.amount : ""}\nI am attaching my payment evidence.`;
+        openWhatsApp(text) || sendWhatsApp(text);
+      });
+      $("#payCopy").addEventListener("click", async () => {
+        const number = $("#momoNumber").textContent.trim();
+        try { await navigator.clipboard.writeText(number); toast("MoMo number copied"); } catch (e) { toast("Number: " + number); }
+      });
       $("#orderCreateAcct").addEventListener("click", () => { closeModal("orderModal"); openAccountRegister($("#customerName").value.trim(), $("#customerPhone").value.trim()); });
-      // notifications
-      if ("serviceWorker" in navigator && "PushManager" in window && "Notification" in window) {
-        let dismissed = false;
-        try { dismissed = Date.now() - Number(localStorage.getItem("ff_notify_dismissed") || 0) < 14 * 864e5; } catch (e) {}
-        if (Notification.permission === "default" && !dismissed) setTimeout(() => { $("#notifyBar").hidden = false; }, 5000);
-        $("#notifyYes").addEventListener("click", async () => { $("#notifyBar").hidden = true; try { await enablePush(); } catch (err) { toast("Notifications could not be turned on"); } });
-        $("#notifyNo").addEventListener("click", () => { $("#notifyBar").hidden = true; try { localStorage.setItem("ff_notify_dismissed", String(Date.now())); } catch (e) {} });
-      }
       // keyboard: Escape closes the top layer, Tab stays inside it
       document.addEventListener("keydown", e => {
         const modal = [...document.querySelectorAll(".modal.open")].pop();
