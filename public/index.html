@@ -955,9 +955,26 @@
     .tile-label{border-top:1px solid #fff}
     .hero-photo,.hero-gallery .slider{border-bottom:1px solid #fff}
     .hero-media{gap:30px}
+      /* gallery: pictures only */
+    .hero-gallery .slider{touch-action:pan-y;background:#0b2236;overflow:hidden}
+    .hero-gallery .slide-placeholder{display:grid;place-items:center;width:100%;height:100%;background:linear-gradient(135deg,#0c2a43,#071a2b)}
+    .hero-gallery .slide-placeholder img{width:88px;height:88px;border-radius:50%;opacity:.92}
+    .hero-gallery .slide img{display:block;width:100%;height:100%;object-fit:cover}
+    /* install card at the top, notification card at the bottom */
+    .pop-top{position:fixed;top:74px;left:0;right:0;z-index:70;display:flex;justify-content:center;padding:0 12px;pointer-events:none}
+    .pop-top .pop{width:min(100%,420px)}
+      .hero-gallery .slide img{-webkit-user-drag:none;user-select:none}
+      /* order: photo, welcome block, sliding box, menu */
+    .hero-media{display:block}
+    .hero{padding-bottom:40px}
+    .hero-grid{padding-top:32px;padding-bottom:34px}
+    .sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .map-btn{display:inline-flex;align-items:center;margin-top:14px;text-decoration:none}
+      .hero-gallery .slide .slide-placeholder img{width:88px;height:88px;object-fit:contain;border-radius:50%}
+      .contact-card a.btn,body[data-theme="dark"] .contact-card a.btn{color:#071a2b;text-decoration:none}
   </style>
   <script>try{var ts=localStorage.getItem("ff_textsize");if(ts&&+ts>=70&&+ts<=170)document.documentElement.style.fontSize=ts+"%"}catch(e){}</script>
-  <link rel="preload" as="image" imagesrcset="/hero-640.jpg 640w, /hero.jpg 1280w" imagesizes="(min-width:900px) 50vw, 100vw" fetchpriority="high">
+  <link rel="preload" as="image" imagesrcset="/hero-640.jpg 640w, /hero.jpg 1280w" imagesizes="100vw" fetchpriority="high">
 </head>
 
 <body>
@@ -980,7 +997,7 @@
         <li><a href="#home">Home</a></li>
         <li><a href="#menuTiles">Menu</a></li>
         <li><button class="owner-trigger" id="installNav" type="button" hidden>Install App</button></li>
-        <li><a href="#location">Location</a></li>
+        <li><a href="https://maps.app.goo.gl/JD7d9atMPzau7RV18" target="_blank" rel="noopener noreferrer">Location<span class="sr-only"> (opens Google Maps in a new tab)</span></a></li>
         <li><a href="#about">About Us</a></li>
         <li><button class="owner-trigger" id="accountNav" type="button">My Account</button></li>
         <li class="ts-group"><button class="ts-btn" type="button" data-textsize="-1" aria-label="Decrease text size">A−</button><button class="ts-btn" type="button" data-textsize="1" aria-label="Increase text size">A+</button></li>
@@ -992,15 +1009,7 @@
   <main id="main" tabindex="-1">
     <section class="hero" id="home" aria-labelledby="heroTitle">
       <div class="hero-media">
-        <img class="hero-photo" src="/hero.jpg" srcset="/hero-640.jpg 640w, /hero.jpg 1280w" sizes="(min-width:900px) 50vw, 100vw" alt="The Fizzles restaurant in daylight, with its two-storey terrace, string lights and the FIZZLES sign" width="1280" height="720" fetchpriority="high" decoding="async">
-        <div class="hero-gallery" role="region" aria-label="Photo gallery">
-          <div class="gallery-box-title" id="galleryTitle1">Gallery Box</div>
-          <div class="slider" id="gallerySlider1">
-            <div class="slides"></div>
-            <button class="slider-arrow prev" type="button" aria-label="Previous gallery image">‹</button>
-            <button class="slider-arrow next" type="button" aria-label="Next gallery image">›</button>
-            <div class="dots"></div>
-          </div>
+        <img class="hero-photo" src="/hero.jpg" srcset="/hero-640.jpg 640w, /hero.jpg 1280w" sizes="100vw" alt="The Fizzles restaurant in daylight, with its two-storey terrace, string lights and the FIZZLES sign" width="1280" height="720" fetchpriority="high" decoding="async">
         </div>
       </div>
       <div class="hero-grid">
@@ -1014,6 +1023,11 @@
             <button class="btn btn-outline" type="button" id="heroGameBtn">Book for Game</button>
             <button class="btn btn-outline" type="button" id="heroEventBtn">Book for Event</button>
           </div>
+        </div>
+      </div>
+      <div class="hero-gallery" role="region" aria-roledescription="carousel" aria-label="Photo gallery">
+        <div class="slider" id="gallerySlider1" data-gallery-slider>
+          <div class="slides"></div>
         </div>
       </div>
     </section>
@@ -1032,7 +1046,7 @@
           <button class="tile" type="button" id="tileCatering"><span class="tile-img" aria-hidden="true"><img src="/art/catering.svg" alt="" width="400" height="300" loading="lazy" decoding="async"></span><span class="tile-label">Event Catering</span></button>
         </div>
         <div class="quick-links">
-          <a href="#location">📍 Location</a>
+          <a href="https://maps.app.goo.gl/JD7d9atMPzau7RV18" target="_blank" rel="noopener noreferrer">📍 Location<span class="sr-only"> (opens Google Maps in a new tab)</span></a>
           <a href="https://wa.me/233242992579" target="_blank" rel="noopener noreferrer">WhatsApp</a>
           <a href="https://snapchat.com/t/ldunI4Hi" target="_blank" rel="noopener noreferrer">Snapchat</a>
           <a href="https://www.instagram.com/fizzles_foodz?stkn=ZXl3OXUwNnFibHFn" target="_blank" rel="noopener noreferrer">Instagram</a>
@@ -1071,6 +1085,7 @@
                 <p>Near 01605 Addo Fei St.</p>
               </div>
             </div>
+            <a class="btn btn-primary btn-small map-btn" href="https://maps.app.goo.gl/JD7d9atMPzau7RV18" target="_blank" rel="noopener noreferrer">Open in Google Maps<span class="sr-only"> (opens in a new tab)</span></a>
           </div>
 
           <div class="contact-card">
@@ -1128,14 +1143,17 @@
   <footer>
     © <span id="year"></span> FIZZLESFOODS & FIZZLESFOODS EVENTS. All rights reserved.
   </footer>
+  <div class="pop-top" id="popTop">
+    <div class="pop" id="installBar" hidden>
+      <span class="pop-ico" aria-hidden="true">📲</span><span class="pop-text"><strong>Install our app</strong><small id="installText">Faster ordering from your home screen</small></span>
+      <button class="pop-btn" id="installBtn" type="button">Install</button><button class="pop-x" id="installClose" type="button" aria-label="Dismiss">✕</button>
+    </div>
+  </div>
+
   <div class="pop-stack" id="popStack">
     <div class="pop pop-special" id="specialWrap" hidden>
       <button class="pop-main" id="specialPill" type="button" aria-haspopup="dialog"><span class="pop-ico" aria-hidden="true">🎉</span><span class="pop-text"><strong>Special event</strong><small id="specialPillText"></small></span><span class="pop-cta" aria-hidden="true">View</span></button>
       <button class="pop-x" id="specialClose" type="button" aria-label="Hide special event notice">✕</button>
-    </div>
-    <div class="pop" id="installBar" hidden>
-      <span class="pop-ico" aria-hidden="true">📲</span><span class="pop-text"><strong>Install our app</strong><small id="installText">Faster ordering from your home screen</small></span>
-      <button class="pop-btn" id="installBtn" type="button">Install</button><button class="pop-x" id="installClose" type="button" aria-label="Dismiss">✕</button>
     </div>
     <div class="pop" id="notifyBar" hidden>
       <span class="pop-ico" aria-hidden="true">🔔</span><span class="pop-text"><strong>Stay updated</strong><small>Special events and new menu items</small></span>
@@ -1519,22 +1537,8 @@
 
         <section class="owner-section" id="ownerGallery">
           <h4>Gallery</h4>
-          <div class="notice">You can change the gallery title below at any time. It is shown to customers immediately after saving.</div>
-          <form id="galleryNamesForm" class="owner-gallery-upload gallery-upload-box">
-            <div class="field"><label for="galleryName1">Gallery title</label><input id="galleryName1" type="text" maxlength="60" required></div>
-            <button class="btn btn-primary" type="submit">Save title</button>
-          </form>
+          <div class="notice">Photos you add here slide automatically in the box at the top of the home page. Only the pictures are shown: no title, labels or buttons.</div>
           <div class="owner-gallery-upload gallery-upload-box">
-            <h5 id="ownerGalleryHeading1">Gallery Box</h5>
-            <div class="notice">Choose the category first. Every photo you select will display this category on the image.</div>
-            <div class="field">
-              <label for="galleryCategory1">Category for these photos</label>
-              <select id="galleryCategory1">
-                <option value="">Choose a category</option>
-                <optgroup label="Food"><option value="Continental dishes">Continental dishes</option><option value="Local dishes">Local dishes</option><option value="Ice cream">Ice cream</option><option value="Salad">Salad</option></optgroup>
-                <optgroup label="Drinks"><option value="Wine">Wine</option><option value="Juice">Juice</option><option value="Non-alcoholic soft drinks">Non-alcoholic soft drinks</option><option value="Alcoholic drink">Alcoholic drink</option></optgroup>
-              </select>
-            </div>
             <div class="field">
               <label for="galleryImages1">Choose photos</label>
               <input id="galleryImages1" type="file" accept="image/*" multiple>
@@ -2271,28 +2275,18 @@
 
     function renderGalleryBox(box) {
       const slider = $(`#gallerySlider${box}`);
-      const galleryTitle = getGalleryTitles()[box];
-      const admin = $(`#galleryAdminList${box}`);
-      if (!slider || !admin) return;
-
+      if (!slider) return;
       const slides = slider.querySelector(".slides");
-      const dots = slider.querySelector(".dots");
-      const safeGallery = getGallery(box).filter(item => item && (item.url || item.data));
-      slides.innerHTML = safeGallery.length
-        ? safeGallery.map((item, i) => `<div class="slide"><img ${i === 0 ? `src="${escapeHTML(item.url || item.data)}"` : `data-gallery-src="${escapeHTML(item.url || item.data)}"`} alt="${escapeHTML(item.category ? item.category + " - " : "")}${escapeHTML(item.name || `${galleryTitle} image`)}" decoding="async" ${i === 0 ? `fetchpriority="high"` : `loading="lazy"`}>${box === 1 && item.category ? `<span class="gallery-category-badge">${escapeHTML(item.category)}</span>` : ""}</div>`).join("")
-        : `<div class="slide"><div class="slide-placeholder"><div><strong>${escapeHTML(galleryTitle)}</strong><span>Photos coming soon.</span></div></div></div>`;
-      dots.innerHTML = safeGallery.map((_,i) => `<button class="dot ${i===0?"active":""}" aria-label="Go to gallery box ${box} image ${i+1}"></button>`).join("");
-
-      admin.innerHTML = safeGallery.length ? safeGallery.map(item => `
+      const photos = getGallery(box).filter(item => item && (item.url || item.data));
+      slides.innerHTML = photos.length
+        ? photos.map((item, i) => `<div class="slide"><img ${i === 0 ? `src="${escapeHTML(item.url || item.data)}"` : `data-gallery-src="${escapeHTML(item.url || item.data)}"`} alt="Photo ${i + 1} of ${photos.length} from Fizzles" width="1280" height="720" decoding="async" draggable="false" ${i === 0 ? "" : 'loading="lazy"'}></div>`).join("")
+        : `<div class="slide"><div class="slide-placeholder"><img src="/icon-192.png" alt="" width="96" height="96"></div></div>`;
+      const admin = $(`#galleryAdminList${box}`);
+      if (admin) admin.innerHTML = photos.length ? photos.map(item => `
         <div class="gallery-admin-item">
-          <img src="${escapeHTML(item.url || item.data)}" alt="${escapeHTML(item.category ? item.category + " - " : "")}${escapeHTML(item.name || `${galleryTitle} image`)}" loading="lazy" decoding="async">
-          ${box === 1 && item.category ? `<div style="padding:8px 10px 0;color:var(--navy);font-size:.78rem;font-weight:850">Category: ${escapeHTML(item.category)}</div>` : ""}
-          <div class="gallery-admin-actions">
-            <button class="btn btn-danger btn-small delete-gallery" data-box="${box}" data-id="${escapeHTML(item.id)}">Delete</button>
-          </div>
-        </div>
-      `).join("") : `<div class="empty" style="grid-column:1/-1">No photos in ${escapeHTML(galleryTitle)} yet.</div>`;
-
+          <img src="${escapeHTML(item.url || item.data)}" alt="Gallery photo" loading="lazy" decoding="async">
+          <div class="gallery-admin-actions"><button class="btn btn-danger btn-small delete-gallery" data-box="${box}" data-id="${escapeHTML(item.id)}">Delete</button></div>
+        </div>`).join("") : `<div class="empty" style="grid-column:1/-1">No photos yet.</div>`;
       setupGallerySlider(slider);
     }
 
@@ -2304,40 +2298,34 @@
       if (!slider) return;
       const slides = slider.querySelector(".slides");
       const items = [...slider.querySelectorAll(".slide")];
-      const dots = [...slider.querySelectorAll(".dot")];
-      let index = 0;
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let index = 0, startX = null;
       if (slider._galleryTimer) clearInterval(slider._galleryTimer);
-
-      const loadSlideImage = item => {
-        if (!item) return;
-        const image = item.querySelector("img[data-gallery-src]");
-        if (!image) return;
-        image.src = image.dataset.gallerySrc;
-        image.removeAttribute("data-gallery-src");
+      const load = item => {
+        const img = item && item.querySelector("img[data-gallery-src]");
+        if (img) { img.src = img.dataset.gallerySrc; img.removeAttribute("data-gallery-src"); }
       };
-
-      loadSlideImage(items[0]);
-
-      const goTo = next => {
-        index = (next + items.length) % items.length;
-        loadSlideImage(items[index]);
-        slides.style.transform = `translateX(-${index*100}%)`;
-        dots.forEach((dot,i) => dot.classList.toggle("active", i===index));
+      const goTo = n => {
+        index = (n + items.length) % items.length;
+        load(items[index]); load(items[(index + 1) % items.length]);
+        slides.style.transform = `translateX(-${index * 100}%)`;
       };
+      const stop = () => { clearInterval(slider._galleryTimer); slider._galleryTimer = null; };
       const restart = () => {
-        clearInterval(slider._galleryTimer);
-        slider._galleryTimer = null;
-        if (document.hidden || items.length < 2) return;
-        slider._galleryTimer = setPerformanceInterval(() => goTo(index+1), 4500);
+        stop();
+        if (document.hidden || items.length < 2 || reduce) return; // no auto-moving for people who asked for less motion
+        slider._galleryTimer = setPerformanceInterval(() => goTo(index + 1), 4500);
       };
       slider._restartGallery = restart;
-
-      const prev = slider.querySelector(".prev");
-      const next = slider.querySelector(".next");
-      if (prev) prev.onclick = () => { goTo(index-1); restart(); };
-      if (next) next.onclick = () => { goTo(index+1); restart(); };
-      dots.forEach((dot,i) => dot.onclick = () => { goTo(i); restart(); });
-      slider.onmouseenter = () => clearInterval(slider._galleryTimer);
+      load(items[0]); load(items[1]);
+      slides.style.transform = "translateX(0)";
+      slider.onpointerdown = e => { startX = e.clientX; stop(); };
+      slider.onpointerup = e => {
+        if (startX !== null && items.length > 1) { const dx = e.clientX - startX; if (Math.abs(dx) > 40) goTo(index + (dx < 0 ? 1 : -1)); }
+        startX = null; restart();
+      };
+      slider.onpointercancel = () => { startX = null; restart(); };
+      slider.onmouseenter = stop;
       slider.onmouseleave = restart;
       restart();
     }
@@ -2345,10 +2333,6 @@
     async function addGalleryFiles(files, box, category = "") {
       const imageFiles = [...files].filter(file => file.type.startsWith("image/"));
       if (!imageFiles.length) return;
-      if (box === 1 && !category) {
-        alert("Please choose a category before selecting photos.");
-        return;
-      }
       const gallery = getGallery(box);
       for (const file of imageFiles) {
         try {
@@ -2476,20 +2460,6 @@
         });
       });
 
-      const galleryNamesForm = $("#galleryNamesForm");
-      if (galleryNamesForm) {
-        applyGalleryTitles();
-        galleryNamesForm.addEventListener("submit", event => {
-          event.preventDefault();
-          const saved = saveGalleryTitles($("#galleryName1").value, $("#galleryName1").value);
-          if (saved) {
-            renderGallery();
-            alert("Gallery title saved successfully.");
-          } else {
-            alert("Please enter a title.");
-          }
-        });
-      }
 
       $("#foodAdminForm").addEventListener("submit", event => {
         event.preventDefault();
@@ -2568,13 +2538,7 @@
       $("#eventClearBtn").addEventListener("click", resetEventForm);
 
       $("#galleryImages1").addEventListener("change", event => {
-        const category = $("#galleryCategory1").value;
-        if (!category) {
-          alert("Please choose a category first.");
-          event.target.value = "";
-          return;
-        }
-        addGalleryFiles(event.target.files, 1, category);
+        addGalleryFiles(event.target.files, 1, "");
         event.target.value = "";
       });
 
@@ -2736,6 +2700,10 @@
     }
 
     /* ---------- menu pages + order (cart) ---------- */
+    /* customer account state (kept here, away from the code blocks that get rewritten) */
+    let customer = null, acctMode = "login", openAccountRegister = () => {};
+    const showPhone = p => { p = String(p || ""); return p.startsWith("233") ? "0" + p.slice(3) : p; };
+
     const CART_KEY = "fizzlesfoods_cart_v1";
     const MENUS = {
       food:  { label: "Meals",  one: "Meal",  items: getFoods,  cats: FOOD_CATEGORIES,  norm: normalizeFoodCategory,  act: "Order Now", empty: "Our meals will appear here soon." },
@@ -2848,7 +2816,7 @@
       menuOpener = document.activeElement; menuType = MENUS[type] ? type : "food"; menuCat = ""; $("#mpSearch").value = "";
       const page = $("#menuPage");
       page.hidden = false; page.scrollTop = 0;
-      document.body.classList.add("menu-open"); updateScrollLock();
+      document.body.classList.add("menu-open"); updateScrollLock(); placeTopPop();
       if (location.hash !== "#menu") location.hash = "#menu";
       renderMenu(); saveCart();
       setTimeout(() => $("#mpBack").focus({ preventScroll: true }), 30);
@@ -2856,7 +2824,7 @@
 
     function closeMenu() {
       $("#menuPage").hidden = true;
-      document.body.classList.remove("menu-open"); updateScrollLock();
+      document.body.classList.remove("menu-open"); updateScrollLock(); placeTopPop();
       if (menuOpener && document.contains(menuOpener)) { try { menuOpener.focus({ preventScroll: true }); } catch (e) {} }
       menuOpener = null;
     }
@@ -2949,6 +2917,13 @@
     }
 
     /* ---------- install to home screen ---------- */
+    function placeTopPop() {
+      const top = $("#popTop"), nav = document.querySelector(".nav");
+      if (!top) return;
+      const base = !$("#menuPage").hidden ? 56 : Math.max(0, nav ? nav.getBoundingClientRect().bottom : 0);
+      top.style.top = (base + 8) + "px";
+    }
+
     function setupInstall() {
       if ("serviceWorker" in navigator) {
         const register = () => navigator.serviceWorker.register("/sw.js").catch(() => {});
@@ -2959,13 +2934,18 @@
       const recently = (key, days) => { try { return Date.now() - Number(localStorage.getItem(key) || 0) < days * 864e5; } catch (e) { return false; } };
       const remember = key => { try { localStorage.setItem(key, String(Date.now())); } catch (e) {} };
       let deferred = null, installReady = false, notifyReady = false;
-      const update = () => { installBar.hidden = !installReady; notifyBar.hidden = !(notifyReady && !installReady); }; // only one prompt at a time
+      const update = () => { installBar.hidden = !installReady; notifyBar.hidden = !notifyReady; placeTopPop(); }; // top card and bottom card work independently
       const doInstall = async () => {
         if (!deferred) return;
         deferred.prompt();
         try { await deferred.userChoice; } catch (e) {}
         deferred = null; installReady = false; nav.hidden = true; update();
       };
+      let ticking = false;
+      const onMove = () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { placeTopPop(); ticking = false; }); } };
+      window.addEventListener("scroll", onMove, { passive: true });
+      window.addEventListener("resize", onMove);
+      placeTopPop();
       if (!standalone) {
         window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); deferred = e; nav.hidden = false; installReady = !recently("ff_install_dismissed", 7); update(); });
         window.addEventListener("appinstalled", () => { installReady = false; nav.hidden = true; deferred = null; update(); toast("App installed"); });
@@ -2978,15 +2958,11 @@
       nav.addEventListener("click", doInstall);
       $("#installClose").addEventListener("click", () => { installReady = false; remember("ff_install_dismissed"); update(); });
       if ("serviceWorker" in navigator && "PushManager" in window && "Notification" in window) {
-        if (Notification.permission === "default" && !recently("ff_notify_dismissed", 14)) setTimeout(() => { notifyReady = true; update(); }, 5000);
+        if (Notification.permission === "default" && !recently("ff_notify_dismissed", 14)) setTimeout(() => { notifyReady = true; update(); }, 4000);
         $("#notifyYes").addEventListener("click", async () => { notifyReady = false; update(); try { await enablePush(); } catch (err) { toast("Notifications could not be turned on"); } });
         $("#notifyNo").addEventListener("click", () => { notifyReady = false; remember("ff_notify_dismissed"); update(); });
       }
     }
-
-    /* ---------- customer accounts ---------- */
-    let customer = null, acctMode = "login", openAccountRegister = () => {};
-    const showPhone = p => { p = String(p || ""); return p.startsWith("233") ? "0" + p.slice(3) : p; };
 
     function updateAccountUI() {
       const first = customer ? String(customer.name || "").split(" ")[0] : "";
