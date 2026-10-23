@@ -1,18 +1,36 @@
 {
   "id": "/",
-  "name": "FIZZLESFOODS AND FIZZLESFOODS EVENTS",
-  "short_name": "Fizzlesfoods",
-  "description": "Order meals and drinks and book events at Fizzlesfoods in Akim Oda.",
+  "name": "FizzlesFoodz and Events",
+  "short_name": "FizzlesFoodz",
+  "description": "Order meals and drinks, play games and book events at FizzlesFoodz and Events in Akim Oda.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#ffffff",
   "theme_color": "#071a2b",
-  "categories": ["food", "shopping"],
+  "categories": [
+    "food",
+    "shopping"
+  ],
   "icons": [
-    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ]
 }
