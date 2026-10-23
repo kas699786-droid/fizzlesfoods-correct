@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="FIZZLESFOODS and FIZZLESFOODS EVENTS — quality food, warm hospitality and memorable celebrations in Akim Oda.">
+  <meta name="description" content="FizzlesFoodz and Events — quality food, warm hospitality and memorable celebrations in Akim Oda.">
   <meta name="theme-color" content="#071a2b">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <title>FIZZLESFOODS AND FIZZLESFOODS EVENTS</title>
+  <title>FizzlesFoodz and Events</title>
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -14,8 +14,8 @@
   <meta name="theme-color" content="#071a2b">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="Fizzlesfoods">
-  <meta property="og:title" content="FIZZLESFOODS and FIZZLESFOODS EVENTS">
+  <meta name="apple-mobile-web-app-title" content="FizzlesFoodz">
+  <meta property="og:title" content="FizzlesFoodz and Events">
   <meta property="og:description" content="Quality food, warm hospitality and memorable celebrations in Akim Oda.">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
@@ -972,6 +972,7 @@
     .map-btn{display:inline-flex;align-items:center;margin-top:14px;text-decoration:none}
       .hero-gallery .slide .slide-placeholder img{width:88px;height:88px;object-fit:contain;border-radius:50%}
       .contact-card a.btn,body[data-theme="dark"] .contact-card a.btn{color:#071a2b;text-decoration:none}
+      .topbar{padding-left:38px;padding-right:38px}
   </style>
   <script>try{var ts=localStorage.getItem("ff_textsize");if(ts&&+ts>=70&&+ts<=170)document.documentElement.style.fontSize=ts+"%"}catch(e){}</script>
   <link rel="preload" as="image" imagesrcset="/hero-640.jpg 640w, /hero.jpg 1280w" imagesizes="100vw" fetchpriority="high">
@@ -979,14 +980,14 @@
 
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
-  <div class="topbar"><button class="owner-dot" id="ownerBtn" type="button" aria-label="Owner login"></button>FIZZLESFOODS & FIZZLESFOODS EVENTS — Taste the Quality • Celebrate the Moment.</div>
+  <div class="topbar"><button class="owner-dot" id="ownerBtn" type="button" aria-label="Owner login"></button>FizzlesFoodz and Events — Taste the Quality • Celebrate the Moment.</div>
   
   <nav class="nav" aria-label="Main navigation">
     <div class="nav-inner">
-      <a class="brand" href="#home" aria-label="FIZZLESFOODS home">
+      <a class="brand" href="#home" aria-label="FizzlesFoodz and Events home">
         <span class="brand-mark"><img src="/icon-192.png" alt="" width="48" height="48" decoding="async"></span>
         <span>
-          <strong>FIZZLESFOODS AND FIZZLESFOODS EVENTS</strong>
+          <strong>FizzlesFoodz and Events</strong>
           <small>Food & Events</small>
         </span>
       </a>
@@ -1015,7 +1016,7 @@
       <div class="hero-grid">
         <div>
           <div class="eyebrow">Welcome to</div>
-          <h1 id="heroTitle">FIZZLESFOODS <span>AND</span> FIZZLESFOODS EVENTS</h1>
+          <h1 id="heroTitle">FizzlesFoodz <span>and</span> Events</h1>
           <p class="hero-copy">Taste the quality. Celebrate the moment. Enjoy delicious food, warm hospitality and memorable events prepared with care.</p>
           <div class="hero-actions">
             <button class="btn btn-primary" type="button" id="heroFoodBtn">Book for Food</button>
@@ -1131,8 +1132,8 @@
       <div class="container">
         <div class="about">
           <div class="section-kicker">About Us</div>
-          <h2>Welcome to Fizzlesfoods and Fizzlesfoods Events Center</h2>
-          <p>Welcome to Fizzlesfoods and Fizzlesfoods Events Center, a place where quality food, warm hospitality, and memorable celebrations come together.</p>
+          <h2>Welcome to FizzlesFoodz and Events Center</h2>
+          <p>Welcome to FizzlesFoodz and Events Center, a place where quality food, warm hospitality, and memorable celebrations come together.</p>
           <p>From delicious local and continental dishes to beautifully decorated halls for weddings, birthdays, and other events, we are here to help make your occasion special.</p>
           <p>Don't forget that here we give you the meal of your choice and make every occasion <strong>special</strong>.</p>
         </div>
@@ -1141,7 +1142,7 @@
   </main>
 
   <footer>
-    © <span id="year"></span> FIZZLESFOODS & FIZZLESFOODS EVENTS. All rights reserved.
+    © <span id="year"></span> FizzlesFoodz and Events. All rights reserved.
   </footer>
   <div class="pop-top" id="popTop">
     <div class="pop" id="installBar" hidden>
@@ -2279,7 +2280,7 @@
       const slides = slider.querySelector(".slides");
       const photos = getGallery(box).filter(item => item && (item.url || item.data));
       slides.innerHTML = photos.length
-        ? photos.map((item, i) => `<div class="slide"><img ${i === 0 ? `src="${escapeHTML(item.url || item.data)}"` : `data-gallery-src="${escapeHTML(item.url || item.data)}"`} alt="Photo ${i + 1} of ${photos.length} from Fizzles" width="1280" height="720" decoding="async" draggable="false" ${i === 0 ? "" : 'loading="lazy"'}></div>`).join("")
+        ? photos.map((item, i) => `<div class="slide"><img ${i === 0 ? `src="${escapeHTML(item.url || item.data)}"` : `data-gallery-src="${escapeHTML(item.url || item.data)}"`} alt="Photo ${i + 1} of ${photos.length} from FizzlesFoodz and Events" width="1280" height="720" decoding="async" draggable="false" ${i === 0 ? "" : 'loading="lazy"'}></div>`).join("")
         : `<div class="slide"><div class="slide-placeholder"><img src="/icon-192.png" alt="" width="96" height="96"></div></div>`;
       const admin = $(`#galleryAdminList${box}`);
       if (admin) admin.innerHTML = photos.length ? photos.map(item => `
@@ -2649,7 +2650,7 @@
         event.preventDefault();
 
         const message = [
-          "Hello Fizzlesfoods, I would like to request event catering.",
+          "Hello FizzlesFoodz and Events, I would like to request event catering.",
           "",
           `Event: ${$("#cateringEvent").value.trim()}`,
           `How I want it: ${$("#cateringHow").value.trim()}`,
@@ -2900,7 +2901,7 @@
         }
         const total = orderTotalText(lines);
         const message = [
-          "Hello Fizzlesfoods, I would like to make a booking.", "", "My order:",
+          "Hello FizzlesFoodz and Events, I would like to make a booking.", "", "My order:",
           ...lines.map((l, i) => l.type === "event"
             ? `${i + 1}. Event: ${l.item.name}${l.item.duration ? " (" + l.item.duration + ")" : ""} - ${l.item.price || "Contact us"}`
             : `${i + 1}. ${TYPE_LABEL[l.type]}: ${l.item.name} x${l.qty} - ${l.item.price || "Contact us"} each = ${formatFoodTotal(l.item.price, l.qty)}`),
@@ -3195,7 +3196,7 @@
       $("#specialList").addEventListener("click", e => {
         const b = e.target.closest("[data-ask]"); if (!b) return;
         const x = getSpecial()[Number(b.dataset.ask)]; if (!x) return;
-        sendWhatsApp(`Hello Fizzlesfoods, I would like to know more about the special event "${x.name}" on ${fmtWhen(x)}.`);
+        sendWhatsApp(`Hello FizzlesFoodz and Events, I would like to know more about the special event "${x.name}" on ${fmtWhen(x)}.`);
       });
       const resetSpecial = () => { $("#specialAdminForm").reset(); $("#specialEditId").value = ""; };
       $("#specialClearBtn").addEventListener("click", resetSpecial);
@@ -3260,7 +3261,7 @@
       $("#bookingDate").addEventListener("input", updateDateHint);
       $("#payAgain").addEventListener("click", () => { if (pendingMessage) openWhatsApp(pendingMessage) || sendWhatsApp(pendingMessage); });
       $("#payEvidence").addEventListener("click", () => {
-        const text = `Hello Fizzlesfoods, I have sent my MoMo payment for my booking.\nName: ${lastOrder.name}${lastOrder.amount ? "\nAmount: " + lastOrder.amount : ""}\nI am attaching my payment evidence.`;
+        const text = `Hello FizzlesFoodz and Events, I have sent my MoMo payment for my booking.\nName: ${lastOrder.name}${lastOrder.amount ? "\nAmount: " + lastOrder.amount : ""}\nI am attaching my payment evidence.`;
         openWhatsApp(text) || sendWhatsApp(text);
       });
       $("#payCopy").addEventListener("click", async () => {
