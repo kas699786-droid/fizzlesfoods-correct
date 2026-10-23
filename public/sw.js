@@ -1,4 +1,4 @@
-const CACHE = "fizzlesfoods-v4";
+const CACHE = "fizzlesfoods-v5";
 const SHELL = ["/", "/logo.jpg", "/icon-192.png", "/icon-512.png"];
 
 self.addEventListener("install", (e) => {
@@ -37,8 +37,8 @@ self.addEventListener("fetch", (e) => {
 
 self.addEventListener("push", (e) => {
   let data = {};
-  try { data = e.data ? e.data.json() : {}; } catch (err) { data = { title: "Fizzlesfoods", body: e.data ? e.data.text() : "" }; }
-  e.waitUntil(self.registration.showNotification(data.title || "Fizzlesfoods", {
+  try { data = e.data ? e.data.json() : {}; } catch (err) { data = { title: "FizzlesFoodz and Events", body: e.data ? e.data.text() : "" }; }
+  e.waitUntil(self.registration.showNotification(data.title || "FizzlesFoodz and Events", {
     body: data.body || "",
     icon: "/icon-192.png",
     badge: "/icon-192.png",
